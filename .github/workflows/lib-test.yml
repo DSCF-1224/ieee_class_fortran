@@ -15,7 +15,13 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v4
 
-            - name: Install Dependencies Ubuntu
+            - uses: fortran-lang/setup-fpm@v7
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+
+            - run: fpm -v
+
+            - name: Install dependencies Ubuntu
               run: |
                 sudo apt-get update
                 sudo apt install -y gfortran
