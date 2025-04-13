@@ -26,3 +26,6 @@ jobs:
                 sudo apt-get update
                 sudo apt install -y gfortran
                 gfortran --version
+
+            - name: Build and Test
+              run: fpm test --flag "-Wall -Wextra -ffree-line-length-none"
