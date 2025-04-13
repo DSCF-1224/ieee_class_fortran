@@ -1,0 +1,22 @@
+name: lib-test
+
+on: [push, pull_request]
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    build-test:
+        runs-on: ubuntu-latest
+        timeout-minutes: 1
+        steps:
+
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install Dependencies Ubuntu
+              run: |
+                sudo apt-get update
+                sudo apt install -y gfortran
+                gfortran --version
