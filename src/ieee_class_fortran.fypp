@@ -32,6 +32,7 @@ module ieee_class_fortran
 
     #:for class_kind in class_kinds
 
+    !> Checks whether `x` is `ieee_${class_kind}$`
     interface is_ieee_${class_kind}$
     #:for prec_kind in prec_kinds
         module procedure :: is_ieee_${class_kind}$_real${prec_kind}$
@@ -45,6 +46,7 @@ module ieee_class_fortran
 
     #:for prec_kind in prec_kinds
 
+    !> Checks whether `x` is `ieee_${class_kind}$`
     logical pure elemental function is_ieee_${class_kind}$_real${prec_kind}$(x) result(status)
 
         real(real${prec_kind}$), intent(in) :: x
