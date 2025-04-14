@@ -1,0 +1,27 @@
+name: lib-documentation
+
+on:
+    workflow_run:
+        workflows:
+            - lib-test
+        types:
+            - completed
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    documentation:
+        runs-on: ubuntu-latest
+        timeout-minutes: 1
+        steps:
+
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install dependencies Ubuntu
+              run: |
+                sudo apt-get update
+                sudo pip install ford
+                ford --version
