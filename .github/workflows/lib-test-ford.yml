@@ -7,7 +7,7 @@ defaults:
         shell: bash
 
 jobs:
-    build-test:
+    build-test-ford:
         runs-on: ubuntu-latest
         timeout-minutes: 1
         steps:
@@ -21,7 +21,7 @@ jobs:
 
             - run: fpm -v
 
-            - name: Install dependencies Ubuntu
+            - name: Install dependencies Ubuntu for test
               run: |
                 sudo apt-get update
                 sudo apt install -y gfortran
@@ -30,8 +30,10 @@ jobs:
             - name: Build and Test
               run: fpm test --flag "-Wall -Wextra -ffree-line-length-none"
 
-            - name: Install dependencies Ubuntu
+            - name: Install dependencies Ubuntu for documentation
               run: |
-                sudo apt-get update
                 sudo pip install ford
                 ford --version
+
+            - name: Build developer documentation
+              run: ford ford.md
