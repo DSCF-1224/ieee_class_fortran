@@ -39,6 +39,7 @@ jobs:
               run: ford ford.md
 
             - name: Upload documentation files as artifact
+              id: deployment
               uses: actions/upload-pages-artifact@v3
               with:
                 path: doc
