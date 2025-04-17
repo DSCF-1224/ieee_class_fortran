@@ -38,9 +38,7 @@ jobs:
             - name: Build developer documentation
               run: ford ford.md
 
-            - name: Upload documentation
-              uses: actions/upload-artifact@v4
+            - name: Upload documentation files as artifact
+              uses: actions/upload-pages-artifact@v3
               with:
-                name: build-test-ford
                 path: doc
-                if-no-files-found: error
