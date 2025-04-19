@@ -52,6 +52,7 @@ jobs:
         needs: build-test-ford
         permissions:
             id-token: write
+            pages: write
         steps:
             - name: Deploy to GitHub Pages
               id: deployment
