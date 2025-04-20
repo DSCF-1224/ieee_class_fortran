@@ -46,7 +46,6 @@ jobs:
                 if-no-files-found: error
 
             - name: Broken Link Check
-              if: ${{ github.ref == 'refs/heads/main'}}
               uses: technote-space/broken-link-checker-action@v1
               with:
                 TARGET: file://${{ github.workspace }}/index.html
