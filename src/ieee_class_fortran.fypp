@@ -1,0 +1,61 @@
+#:mute
+
+#! real kinds
+#:set prec_kinds = ['32', '64', '128']
+
+#! ieee class
+#:set class_kinds = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
+
+#:endmute
+module ieee_class_fortran
+
+
+    #:for prec_kind in prec_kinds
+    use, intrinsic :: iso_fortran_env, only: real${prec_kind}$
+    #:endfor
+
+
+    use, intrinsic :: ieee_arithmetic, only: operator(.eq.)
+    use, intrinsic :: ieee_arithmetic, only: ieee_class
+    #:for class_kind in class_kinds
+    use, intrinsic :: ieee_arithmetic, only: ieee_${class_kind}$
+    #:endfor
+
+
+    implicit none
+
+
+    private
+    #:for class_kind in class_kinds
+    public  :: is_ieee_${class_kind}$
+    #:endfor
+
+    #:for class_kind in class_kinds
+
+    !> Checks whether `x` is `ieee_${class_kind}$`
+    interface is_ieee_${class_kind}$
+    #:for prec_kind in prec_kinds
+        module procedure :: is_ieee_${class_kind}$_real${prec_kind}$
+    #:endfor
+    end interface
+
+    #:endfor
+
+    contains
+    #:for class_kind in class_kinds
+
+    #:for prec_kind in prec_kinds
+
+    !> Checks whether `x` is `ieee_${class_kind}$`
+    logical pure elemental function is_ieee_${class_kind}$_real${prec_kind}$(x) result(status)
+
+        real(real${prec_kind}$), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_${class_kind}$
+
+    end function
+
+    #:endfor
+
+    #:endfor
+end module ieee_class_fortran

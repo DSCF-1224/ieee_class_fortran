@@ -1,0 +1,61 @@
+name: lib-test-ford
+
+on: [push, pull_request]
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    build-test-ford:
+        runs-on: ubuntu-latest
+        timeout-minutes: 1
+        steps:
+
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - uses: fortran-lang/setup-fpm@v7
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+
+            - run: fpm -v
+
+            - name: Install dependencies Ubuntu for test
+              run: |
+                sudo apt-get update
+                sudo apt install -y gfortran
+                gfortran --version
+
+            - name: Build and Test
+              run: fpm test --flag "-Wall -Wextra -ffree-line-length-none"
+
+            - name: Install dependencies Ubuntu for documentation
+              run: |
+                sudo pip install ford
+                ford --version
+
+            - name: Build developer documentation
+              run: ford ford.md
+
+            - name: Upload Documentation
+              uses: actions/upload-artifact@v4
+              with:
+                name: documentation
+                path: doc
+                if-no-files-found: error
+
+            - name: Broken Link Check
+              if: ${{ github.ref == 'refs/heads/main'}}
+              uses: technote-space/broken-link-checker-action@v1
+              with:
+                TARGET: file://${{ github.workspace }}/index.html
+                RECURSIVE: true
+                ASSIGNEES: ${{ github.actor }}
+          
+            - name: Deploy API Documentation
+              uses: JamesIves/github-pages-deploy-action@4.1.0
+              if: ${{ github.event_name == 'push'  &&  github.ref == 'refs/heads/main' }}
+              with:
+                branch: github-pages
+                folder: doc
