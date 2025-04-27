@@ -1,24 +1,24 @@
 #:mute
 
 #! real kinds
-#:set prec_kinds = ['32', '64', '128']
+#:set REAL_KINDS = ['real32', 'real64', 'real128']
 
 #! ieee class
-#:set class_kinds = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
+#:set IEEE_CLASSES = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
 
 #:endmute
 module ieee_class_fortran
 
 
-    #:for prec_kind in prec_kinds
-    use, intrinsic :: iso_fortran_env, only: real${prec_kind}$
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
 
 
     use, intrinsic :: ieee_arithmetic, only: operator(.eq.)
     use, intrinsic :: ieee_arithmetic, only: ieee_class
-    #:for class_kind in class_kinds
-    use, intrinsic :: ieee_arithmetic, only: ieee_${class_kind}$
+    #:for IEEE_CLASS in IEEE_CLASSES
+    use, intrinsic :: ieee_arithmetic, only: ieee_${IEEE_CLASS}$
     #:endfor
 
 
@@ -26,32 +26,33 @@ module ieee_class_fortran
 
 
     private
-    #:for class_kind in class_kinds
-    public  :: is_ieee_${class_kind}$
+    #:for IEEE_CLASS in IEEE_CLASSES
+    public  :: is_ieee_${IEEE_CLASS}$
     #:endfor
 
-    #:for class_kind in class_kinds
+    #:for IEEE_CLASS in IEEE_CLASSES
 
-    !> Checks whether `x` is `ieee_${class_kind}$`
-    interface is_ieee_${class_kind}$
-    #:for prec_kind in prec_kinds
-        module procedure :: is_ieee_${class_kind}$_real${prec_kind}$
+    !> Checks whether `x` is `ieee_${IEEE_CLASS}$`
+    #:set INTERFACE_NAME = "is_ieee_" + IEEE_CLASS
+    interface ${INTERFACE_NAME}$
+    #:for REAL_KIND in REAL_KINDS
+        module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
     #:endfor
     end interface
 
     #:endfor
 
     contains
-    #:for class_kind in class_kinds
+    #:for IEEE_CLASS in IEEE_CLASSES
 
-    #:for prec_kind in prec_kinds
+    #:for REAL_KIND in REAL_KINDS
 
-    !> Checks whether `x` is `ieee_${class_kind}$`
-    logical pure elemental function is_ieee_${class_kind}$_real${prec_kind}$(x) result(status)
+    !> Checks whether `x` is `ieee_${IEEE_CLASS}$`
+    logical pure elemental function is_ieee_${IEEE_CLASS}$_${REAL_KIND}$(x) result(status)
 
-        real(real${prec_kind}$), intent(in) :: x
+        real(${REAL_KIND}$), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_${class_kind}$
+        status = ieee_class(x) .eq. ieee_${IEEE_CLASS}$
 
     end function
 
