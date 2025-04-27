@@ -1,16 +1,16 @@
 #:mute
 
 #! real kinds
-#:set prec_kinds = ['32', '64', '128']
+#:set REAL_KINDS = ['real32', 'real64', 'real128']
 
 #! ieee class
-#:set class_kinds = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
+#:set IEEE_CLASSES = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
 
 #:endmute
 program check
 
-    #:for prec_kind in prec_kinds
-    use, intrinsic :: iso_fortran_env, only: real${prec_kind}$
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
     #:endfor
     use, intrinsic :: iso_fortran_env, only: compiler_options
     use, intrinsic :: iso_fortran_env, only: compiler_version
@@ -53,20 +53,20 @@ program check
     #:set target_subroutine_name = "test_is_" + target_ieee_class
     subroutine ${target_subroutine_name}$()
 
-        #:for prec_kind in prec_kinds
+        #:for KIND in REAL_KINDS
 
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
 
         #:endfor
 
@@ -80,20 +80,20 @@ program check
     #:set target_subroutine_name = "test_is_" + target_ieee_class
     subroutine ${target_subroutine_name}$()
 
-        #:for prec_kind in prec_kinds
+        #:for KIND in REAL_KINDS
 
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
 
         #:endfor
 
@@ -107,20 +107,20 @@ program check
     #:set target_subroutine_name = "test_is_" + target_ieee_class
     subroutine ${target_subroutine_name}$()
 
-        #:for prec_kind in prec_kinds
+        #:for KIND in REAL_KINDS
 
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
 
         #:endfor
 
@@ -134,20 +134,20 @@ program check
     #:set target_subroutine_name = "test_is_" + target_ieee_class
     subroutine ${target_subroutine_name}$()
 
-        #:for prec_kind in prec_kinds
+        #:for KIND in REAL_KINDS
 
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_real${prec_kind}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (real${prec_kind}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
 
         #:endfor
 
