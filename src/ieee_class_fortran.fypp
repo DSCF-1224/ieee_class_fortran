@@ -20,6 +20,7 @@ module ieee_class_fortran
     #:for IEEE_CLASS in IEEE_CLASSES
     use, intrinsic :: ieee_arithmetic, only: ieee_${IEEE_CLASS}$
     #:endfor
+    use, intrinsic :: ieee_arithmetic, only: ieee_value
 
 
     implicit none
@@ -29,11 +30,25 @@ module ieee_class_fortran
     #:for IEEE_CLASS in IEEE_CLASSES
     public  :: is_ieee_${IEEE_CLASS}$
     #:endfor
+    #:for IEEE_CLASS in IEEE_CLASSES
+    public  :: set_ieee_${IEEE_CLASS}$
+    #:endfor
 
     #:for IEEE_CLASS in IEEE_CLASSES
 
     !> Checks whether `x` is `ieee_${IEEE_CLASS}$`
     #:set INTERFACE_NAME = "is_ieee_" + IEEE_CLASS
+    interface ${INTERFACE_NAME}$
+    #:for REAL_KIND in REAL_KINDS
+        module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
+    #:endfor
+    end interface
+
+    #:endfor
+    #:for IEEE_CLASS in IEEE_CLASSES
+
+    !> Substitute `ieee_${IEEE_CLASS}$` to `x` using `ieee_value`
+    #:set INTERFACE_NAME = "set_ieee_" + IEEE_CLASS
     interface ${INTERFACE_NAME}$
     #:for REAL_KIND in REAL_KINDS
         module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
@@ -55,6 +70,22 @@ module ieee_class_fortran
         status = ieee_class(x) .eq. ieee_${IEEE_CLASS}$
 
     end function
+
+    #:endfor
+
+    #:endfor
+    #:for IEEE_CLASS in IEEE_CLASSES
+
+    #:for REAL_KIND in REAL_KINDS
+
+    !> Substitute `ieee_${IEEE_CLASS}$` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_${IEEE_CLASS}$_${REAL_KIND}$(x)
+
+        real(${REAL_KIND}$), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_${IEEE_CLASS}$ )
+
+    end subroutine
 
     #:endfor
 
