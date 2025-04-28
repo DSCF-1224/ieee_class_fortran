@@ -5,6 +5,7 @@
 
 #! ieee class
 #:set IEEE_CLASSES = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
+#:set IEEE_CLASSES_ARG = ['ieee_signaling_nan', 'ieee_quiet_nan', 'ieee_negative_inf', 'ieee_negative_normal', 'ieee_negative_denormal', 'ieee_negative_subnormal', 'ieee_negative_zero', 'ieee_positive_zero', 'ieee_positive_subnormal', 'ieee_positive_denormal', 'ieee_positive_normal', 'ieee_positive_inf']
 
 #:endmute
 program check
@@ -16,18 +17,9 @@ program check
     use, intrinsic :: iso_fortran_env, only: compiler_version
 
 
-    use, intrinsic :: ieee_arithmetic, only: ieee_signaling_nan
-    use, intrinsic :: ieee_arithmetic, only: ieee_quiet_nan
-    use, intrinsic :: ieee_arithmetic, only: ieee_negative_inf
-    use, intrinsic :: ieee_arithmetic, only: ieee_negative_normal
-    use, intrinsic :: ieee_arithmetic, only: ieee_negative_denormal
-    use, intrinsic :: ieee_arithmetic, only: ieee_negative_subnormal
-    use, intrinsic :: ieee_arithmetic, only: ieee_negative_zero
-    use, intrinsic :: ieee_arithmetic, only: ieee_positive_zero
-    use, intrinsic :: ieee_arithmetic, only: ieee_positive_subnormal
-    use, intrinsic :: ieee_arithmetic, only: ieee_positive_denormal
-    use, intrinsic :: ieee_arithmetic, only: ieee_positive_normal
-    use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
+    #:for CLASS in IEEE_CLASSES_ARG 
+    use, intrinsic :: ieee_arithmetic, only: ${CLASS}$
+    #:endfor
     use, intrinsic :: ieee_arithmetic, only: ieee_value
 
 
