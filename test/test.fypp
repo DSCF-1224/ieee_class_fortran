@@ -4,8 +4,30 @@
 #:set REAL_KINDS = ['real32', 'real64', 'real128']
 
 #! ieee class
-#:set IEEE_CLASSES = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero']
-#:set IEEE_CLASSES_ARG = ['ieee_signaling_nan', 'ieee_quiet_nan', 'ieee_negative_inf', 'ieee_negative_normal', 'ieee_negative_denormal', 'ieee_negative_subnormal', 'ieee_negative_zero', 'ieee_positive_zero', 'ieee_positive_subnormal', 'ieee_positive_denormal', 'ieee_positive_normal', 'ieee_positive_inf']
+
+#:set IEEE_CLASSES_TARGET = &
+    [ &
+        "ieee_negative_inf"  , &
+        "ieee_negative_zero" , &
+        "ieee_positive_zero" , &
+        "ieee_positive_inf"    &
+    ]
+
+#:set IEEE_CLASSES_ARG = &
+    [ &
+        "ieee_signaling_nan"      , &
+        "ieee_quiet_nan"          , &
+        "ieee_negative_inf"       , &
+        "ieee_negative_normal"    , &
+        "ieee_negative_denormal"  , &
+        "ieee_negative_subnormal" , &
+        "ieee_negative_zero"      , &
+        "ieee_positive_zero"      , &
+        "ieee_positive_subnormal" , &
+        "ieee_positive_denormal"  , &
+        "ieee_positive_normal"    , &
+        "ieee_positive_inf"         &
+    ]
 
 #:endmute
 program check
@@ -40,111 +62,39 @@ program check
 
     contains
 
+    #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
 
-    #:set target_ieee_class = "ieee_negative_inf"
-    #:set target_subroutine_name = "test_is_" + target_ieee_class
-    subroutine ${target_subroutine_name}$()
+
+    #:set TEST_TARGET_FUNCTION_NAME = "is_" + IEEE_CLASS_TARGET
+    #:set SUBROUTINE_NAME = "test_" + TEST_TARGET_FUNCTION_NAME
+    subroutine ${SUBROUTINE_NAME}$()
 
         #:for KIND in REAL_KINDS
+        #:for IEEE_CLASS_ARG in IEEE_CLASSES_ARG
+        #:mute
 
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
+            #:set FLAG = ""
+            #:set ERR_MSG = "; NG; " + TEST_TARGET_FUNCTION_NAME + "(" + IEEE_CLASS_ARG + " as " + KIND + ") must be "
+
+            #:if IEEE_CLASS_TARGET == IEEE_CLASS_ARG
+                #:set FLAG = ".not. "
+                #:set ERR_MSG = ERR_MSG + ".true."
+            #:else
+                #:set ERR_MSG = ERR_MSG + ".false."
+            #:endif
+
+        #:endmute
+        if ( ${FLAG}$${TEST_TARGET_FUNCTION_NAME}$( ieee_value( 0.0_${KIND}$ , ${IEEE_CLASS_ARG}$ ) ) ) then
+            error stop '${ERR_MSG}$'
+        end if
 
         #:endfor
 
-        print '(A)', 'OK: ${target_subroutine_name}$'
-
-    end subroutine ${target_subroutine_name}$
-
-
-
-    #:set target_ieee_class = "ieee_negative_zero"
-    #:set target_subroutine_name = "test_is_" + target_ieee_class
-    subroutine ${target_subroutine_name}$()
-
-        #:for KIND in REAL_KINDS
-
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-
         #:endfor
 
-        print '(A)', 'OK: ${target_subroutine_name}$'
+        print '(A)', 'OK: ${SUBROUTINE_NAME}$'
 
-    end subroutine ${target_subroutine_name}$
+    end subroutine ${SUBROUTINE_NAME}$
 
-
-
-    #:set target_ieee_class = "ieee_positive_inf"
-    #:set target_subroutine_name = "test_is_" + target_ieee_class
-    subroutine ${target_subroutine_name}$()
-
-        #:for KIND in REAL_KINDS
-
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-
-        #:endfor
-
-        print '(A)', 'OK: ${target_subroutine_name}$'
-
-    end subroutine ${target_subroutine_name}$
-
-
-
-    #:set target_ieee_class = "ieee_positive_zero"
-    #:set target_subroutine_name = "test_is_" + target_ieee_class
-    subroutine ${target_subroutine_name}$()
-
-        #:for KIND in REAL_KINDS
-
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_signaling_nan      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_quiet_nan          ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_negative_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if ( .not. is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_zero      ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_subnormal ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_denormal  ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_normal    ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-        if (       is_${target_ieee_class}$( ieee_value( 0.0_${KIND}$ , ieee_positive_inf       ) ) ) error stop '${_FILE_}$:L${_LINE_}$ (${KIND}$)'
-
-        #:endfor
-
-        print '(A)', 'OK: ${target_subroutine_name}$'
-
-    end subroutine ${target_subroutine_name}$
-
+    #:endfor
 end program check
