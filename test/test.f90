@@ -33,8 +33,8 @@ program check
 
     call test_is_ieee_negative_inf
     call test_is_ieee_negative_zero
-    call test_is_ieee_positive_inf
     call test_is_ieee_positive_zero
+    call test_is_ieee_positive_inf
 
 
     contains

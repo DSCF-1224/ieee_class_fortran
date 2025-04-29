@@ -54,10 +54,9 @@ program check
     print * , compiler_version()
     print * , compiler_options()
 
-    call test_is_ieee_negative_inf
-    call test_is_ieee_negative_zero
-    call test_is_ieee_positive_inf
-    call test_is_ieee_positive_zero
+    #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
+    call test_is_${IEEE_CLASS_TARGET}$
+    #:endfor
 
 
     contains
