@@ -4,5 +4,5 @@ license: mit
 project_github: https://github.com/DSCF-1224/ieee_class_fortran
 github: https://github.com/DSCF-1224
 display: public
-         private
+         protected
 source: true
