@@ -9,6 +9,7 @@
     [ &
         "ieee_negative_inf"  , &
         "ieee_negative_zero" , &
+        "ieee_either_zero"   , &
         "ieee_positive_zero" , &
         "ieee_positive_inf"    &
     ]

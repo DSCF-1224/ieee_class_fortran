@@ -44,11 +44,24 @@ program check
             #:set FLAG = ""
             #:set ERR_MSG = "; NG; " + TEST_TARGET_FUNCTION_NAME + "(" + IEEE_CLASS_ARG + " as " + KIND + ") must be "
 
-            #:if IEEE_CLASS_TARGET == IEEE_CLASS_ARG
-                #:set FLAG = ".not. "
-                #:set ERR_MSG = ERR_MSG + ".true."
+            #:if IEEE_CLASS_TARGET != "ieee_either_zero"
+
+                #:if IEEE_CLASS_TARGET == IEEE_CLASS_ARG
+                    #:set FLAG = ".not. "
+                    #:set ERR_MSG = ERR_MSG + ".true."
+                #:else
+                    #:set ERR_MSG = ERR_MSG + ".false."
+                #:endif
+
             #:else
-                #:set ERR_MSG = ERR_MSG + ".false."
+
+                #:if (IEEE_CLASS_ARG == "ieee_negative_zero") or (IEEE_CLASS_ARG == "ieee_positive_zero")
+                    #:set FLAG = ".not. "
+                    #:set ERR_MSG = ERR_MSG + ".true."
+                #:else
+                    #:set ERR_MSG = ERR_MSG + ".false."
+                #:endif
+
             #:endif
 
         #:endmute
