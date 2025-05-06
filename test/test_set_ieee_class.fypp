@@ -93,7 +93,7 @@ program check
             #:endif
 
         #:endmute
-        if ( ${FLAG}$is_${IEEE_CLASS_TARGET}$( ieee_value( 0.0_${KIND}$ , ${IEEE_CLASS_ARG}$ ) ) ) then
+        if ( ${FLAG}$is_${IEEE_CLASS_TARGET}$( ieee_value( test_${KIND}$ , ${IEEE_CLASS_ARG}$ ) ) ) then
             error stop '${ERR_MSG}$'
         end if
 
