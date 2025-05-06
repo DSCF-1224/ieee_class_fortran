@@ -30,7 +30,9 @@ jobs:
                 gfortran --version
 
             - name: Build and Test
-              run: fpm test --flag "-Wall -Wextra -ffree-line-length-none"
+              run: |
+                chmod +x ./run_fpm_test.sh
+                ./run_fpm_test.sh
 
             - name: Install dependencies Ubuntu for documentation
               run: |
