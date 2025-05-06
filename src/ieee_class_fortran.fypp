@@ -27,12 +27,22 @@ module ieee_class_fortran
 
 
     private
+    public  :: is_ieee_either_zero
     #:for IEEE_CLASS in IEEE_CLASSES
     public  :: is_ieee_${IEEE_CLASS}$
     #:endfor
     #:for IEEE_CLASS in IEEE_CLASSES
     public  :: set_ieee_${IEEE_CLASS}$
     #:endfor
+
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    #:set INTERFACE_NAME = "is_ieee_either_zero"
+    interface ${INTERFACE_NAME}$
+    #:for REAL_KIND in REAL_KINDS
+        module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
+    #:endfor
+    end interface
 
     #:for IEEE_CLASS in IEEE_CLASSES
 
@@ -58,6 +68,22 @@ module ieee_class_fortran
     #:endfor
 
     contains
+
+    #:for REAL_KIND in REAL_KINDS
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_${REAL_KIND}$(x) result(status)
+
+        real(${REAL_KIND}$), intent(in) :: x
+
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
+
+    end function
+
+    #:endfor
     #:for IEEE_CLASS in IEEE_CLASSES
 
     #:for REAL_KIND in REAL_KINDS
