@@ -53,149 +53,149 @@ program check
         call set_ieee_negative_inf(test_real128)
 
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( .not. is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_negative_inf ) ) ) then
+        if ( .not. is_ieee_negative_inf( ieee_value( test_real32 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .true.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real32 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real32 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real32) must be .false.'
         end if
 
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( .not. is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_negative_inf ) ) ) then
+        if ( .not. is_ieee_negative_inf( ieee_value( test_real64 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .true.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real64 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real64 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real64) must be .false.'
         end if
 
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( .not. is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_negative_inf ) ) ) then
+        if ( .not. is_ieee_negative_inf( ieee_value( test_real128 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .true.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_inf( ieee_value( 0.0_real128 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_negative_inf( ieee_value( test_real128 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_inf(test_real128) must be .false.'
         end if
 
@@ -219,149 +219,149 @@ program check
         call set_ieee_negative_zero(test_real128)
 
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( .not. is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_negative_zero ) ) ) then
+        if ( .not. is_ieee_negative_zero( ieee_value( test_real32 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .true.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real32 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real32 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real32) must be .false.'
         end if
 
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( .not. is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_negative_zero ) ) ) then
+        if ( .not. is_ieee_negative_zero( ieee_value( test_real64 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .true.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real64 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real64 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real64) must be .false.'
         end if
 
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( .not. is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_negative_zero ) ) ) then
+        if ( .not. is_ieee_negative_zero( ieee_value( test_real128 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .true.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_negative_zero( ieee_value( 0.0_real128 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_negative_zero( ieee_value( test_real128 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .false.'
         end if
 
@@ -385,149 +385,149 @@ program check
         call set_ieee_positive_zero(test_real128)
 
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( .not. is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_positive_zero ) ) ) then
+        if ( .not. is_ieee_positive_zero( ieee_value( test_real32 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .true.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real32 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real32 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real32) must be .false.'
         end if
 
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( .not. is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_positive_zero ) ) ) then
+        if ( .not. is_ieee_positive_zero( ieee_value( test_real64 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .true.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real64 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real64 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real64) must be .false.'
         end if
 
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( .not. is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_positive_zero ) ) ) then
+        if ( .not. is_ieee_positive_zero( ieee_value( test_real128 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .true.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_zero( ieee_value( 0.0_real128 , ieee_positive_inf ) ) ) then
+        if ( is_ieee_positive_zero( ieee_value( test_real128 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_zero(test_real128) must be .false.'
         end if
 
@@ -551,149 +551,149 @@ program check
         call set_ieee_positive_inf(test_real128)
 
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real32 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .false.'
         end if
 
-        if ( .not. is_ieee_positive_inf( ieee_value( 0.0_real32 , ieee_positive_inf ) ) ) then
+        if ( .not. is_ieee_positive_inf( ieee_value( test_real32 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real32) must be .true.'
         end if
 
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real64 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .false.'
         end if
 
-        if ( .not. is_ieee_positive_inf( ieee_value( 0.0_real64 , ieee_positive_inf ) ) ) then
+        if ( .not. is_ieee_positive_inf( ieee_value( test_real64 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real64) must be .true.'
         end if
 
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_signaling_nan ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_signaling_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_quiet_nan ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_quiet_nan ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_negative_inf ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_negative_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_negative_normal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_negative_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_negative_denormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_negative_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_negative_subnormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_negative_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_negative_zero ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_negative_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_positive_zero ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_positive_zero ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_positive_subnormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_positive_subnormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_positive_denormal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_positive_denormal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_positive_normal ) ) ) then
+        if ( is_ieee_positive_inf( ieee_value( test_real128 , ieee_positive_normal ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
         end if
 
-        if ( .not. is_ieee_positive_inf( ieee_value( 0.0_real128 , ieee_positive_inf ) ) ) then
+        if ( .not. is_ieee_positive_inf( ieee_value( test_real128 , ieee_positive_inf ) ) ) then
             error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .true.'
         end if
 
