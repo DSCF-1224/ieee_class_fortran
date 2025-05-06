@@ -24,13 +24,16 @@ program check
     print * , compiler_options()
 
     #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
+    #:if IEEE_CLASS_TARGET != "ieee_either_zero"
     call test_set_${IEEE_CLASS_TARGET}$
+    #:endif
     #:endfor
 
 
     contains
 
     #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
+    #:if IEEE_CLASS_TARGET != "ieee_either_zero"
 
 
     #:set TEST_TARGET_SUBROUTINE_NAME = "set_" + IEEE_CLASS_TARGET
@@ -74,5 +77,6 @@ program check
 
     end subroutine ${SUBROUTINE_NAME}$
 
+    #:endif
     #:endfor
 end program check
