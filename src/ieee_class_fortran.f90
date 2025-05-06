@@ -19,6 +19,7 @@ module ieee_class_fortran
 
 
     private
+    public  :: is_ieee_either_zero
     public  :: is_ieee_negative_inf
     public  :: is_ieee_negative_zero
     public  :: is_ieee_positive_inf
@@ -27,6 +28,14 @@ module ieee_class_fortran
     public  :: set_ieee_negative_zero
     public  :: set_ieee_positive_inf
     public  :: set_ieee_positive_zero
+
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    interface is_ieee_either_zero
+        module procedure :: is_ieee_either_zero_real32
+        module procedure :: is_ieee_either_zero_real64
+        module procedure :: is_ieee_either_zero_real128
+    end interface
 
 
     !> Checks whether `x` is `ieee_negative_inf`
@@ -94,6 +103,46 @@ module ieee_class_fortran
 
 
     contains
+
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_real32(x) result(status)
+
+        real(real32), intent(in) :: x
+
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
+
+    end function
+
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_real64(x) result(status)
+
+        real(real64), intent(in) :: x
+
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
+
+    end function
+
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_real128(x) result(status)
+
+        real(real128), intent(in) :: x
+
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
+
+    end function
+
 
 
     !> Checks whether `x` is `ieee_negative_inf`
