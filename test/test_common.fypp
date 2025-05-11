@@ -11,7 +11,9 @@
         "ieee_negative_zero" , &
         "ieee_either_zero"   , &
         "ieee_positive_zero" , &
-        "ieee_positive_inf"    &
+        "ieee_positive_inf"  , &
+        "ieee_quiet_nan"     , &
+        "ieee_signaling_nan"   &
     ]
 
 #:set IEEE_CLASSES_ARG = &
