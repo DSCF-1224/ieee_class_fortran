@@ -36,6 +36,7 @@ program check
     call test_set_ieee_positive_zero
     call test_set_ieee_positive_inf
     call test_set_ieee_quiet_nan
+    call test_set_ieee_signaling_nan
 
 
     contains
@@ -869,5 +870,171 @@ program check
         print '(A)', 'OK: test_set_ieee_quiet_nan'
 
     end subroutine test_set_ieee_quiet_nan
+
+
+
+    subroutine test_set_ieee_signaling_nan()
+
+        real(real32) :: test_real32
+        real(real64) :: test_real64
+        real(real128) :: test_real128
+
+
+        call set_ieee_signaling_nan(test_real32)
+        call set_ieee_signaling_nan(test_real64)
+        call set_ieee_signaling_nan(test_real128)
+
+
+        if ( .not. is_ieee_signaling_nan( ieee_value( test_real32 , ieee_signaling_nan ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .true.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_quiet_nan ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_negative_inf ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_negative_normal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_negative_denormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_negative_subnormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_negative_zero ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_positive_zero ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_positive_subnormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_positive_denormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_positive_normal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real32 , ieee_positive_inf ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real32) must be .false.'
+        end if
+
+
+        if ( .not. is_ieee_signaling_nan( ieee_value( test_real64 , ieee_signaling_nan ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .true.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_quiet_nan ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_negative_inf ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_negative_normal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_negative_denormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_negative_subnormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_negative_zero ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_positive_zero ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_positive_subnormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_positive_denormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_positive_normal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real64 , ieee_positive_inf ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real64) must be .false.'
+        end if
+
+
+        if ( .not. is_ieee_signaling_nan( ieee_value( test_real128 , ieee_signaling_nan ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .true.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_quiet_nan ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_negative_inf ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_negative_normal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_negative_denormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_negative_subnormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_negative_zero ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_positive_zero ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_positive_subnormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_positive_denormal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_positive_normal ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+        if ( is_ieee_signaling_nan( ieee_value( test_real128 , ieee_positive_inf ) ) ) then
+            error stop '; NG; result of set_ieee_signaling_nan(test_real128) must be .false.'
+        end if
+
+
+
+        print '(A)', 'OK: test_set_ieee_signaling_nan'
+
+    end subroutine test_set_ieee_signaling_nan
 
 end program check
