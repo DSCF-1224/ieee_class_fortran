@@ -1,0 +1,111 @@
+#:include "test_common.fypp"
+#:mute
+
+    #:if MODE == 1
+        #:set TARGET_FUNCTION_NAME = "ieee_is_finite"
+    #:elif MODE == 2
+        #:set TARGET_FUNCTION_NAME = "ieee_is_nan"
+    #:elif MODE == 3
+        #:set TARGET_FUNCTION_NAME = "ieee_is_negative"
+    #:else
+        #:stop "Unsupported mode is detected."
+    #:endif
+
+#:endmute
+program check
+
+    #:for KIND in REAL_KINDS
+    use, intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+    use, intrinsic :: iso_fortran_env, only: compiler_options
+    use, intrinsic :: iso_fortran_env, only: compiler_version
+
+
+    use, intrinsic :: ieee_arithmetic, only: ${TARGET_FUNCTION_NAME}$
+
+
+    use, non_intrinsic :: ieee_class_fortran
+
+
+    implicit none
+
+
+    print * , compiler_version()
+    print * , compiler_options()
+
+    #:for KIND in REAL_KINDS
+    call test_${TARGET_FUNCTION_NAME}$_${KIND}$
+    #:endfor
+
+    print '(A)', 'OK: test_${TARGET_FUNCTION_NAME}$'
+
+
+    contains
+
+
+    #:for KIND in REAL_KINDS
+    #:set SUBROUTINE_NAME = "test_" + TARGET_FUNCTION_NAME + "_" + KIND
+    subroutine ${SUBROUTINE_NAME}$()
+
+
+        #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
+        #:if IEEE_CLASS_TARGET != "ieee_either_zero"
+        #:set TEST_TARGET_SUBROUTINE_NAME = "set_" + IEEE_CLASS_TARGET
+        block
+
+            real(${KIND}$) :: test_${KIND}$
+
+            call ${TEST_TARGET_SUBROUTINE_NAME}$(test_${KIND}$)
+            #:mute
+
+                #:set ERR_MSG_FORE = "; NG; result of " + TEST_TARGET_SUBROUTINE_NAME + "(test_" + KIND + ") must be"
+
+                #:if TARGET_FUNCTION_NAME == "ieee_is_finite"
+
+                    #:if IEEE_CLASS_TARGET.endswith("inf") or IEEE_CLASS_TARGET.endswith("nan")
+                        #:set ERR_MSG_REAR = ".false."
+                        #:set FLAG         = ""
+                    #:else
+                        #:set ERR_MSG_REAR = ".true."
+                        #:set FLAG         = ".not. "
+                    #:endif
+
+                #:elif TARGET_FUNCTION_NAME == "ieee_is_nan"
+
+                    #:if "nan" in IEEE_CLASS_TARGET
+                        #:set ERR_MSG_REAR = ".true."
+                        #:set FLAG         = ".not. "
+                    #:else
+                        #:set ERR_MSG_REAR = ".false."
+                        #:set FLAG         = ""
+                    #:endif
+
+                #:elif TARGET_FUNCTION_NAME == "ieee_is_negative"
+
+                    #:if "negative" in IEEE_CLASS_TARGET
+                        #:set ERR_MSG_REAR = ".true."
+                        #:set FLAG         = ".not. "
+                    #:else
+                        #:set ERR_MSG_REAR = ".false."
+                        #:set FLAG         = ""
+                    #:endif
+
+                #:else
+                    #:stop "Unsupported target function: `{}` is detected.".format(TARGET_FUNCTION_NAME)
+                #:endif
+
+            #:endmute
+            if ( ${FLAG}$${TARGET_FUNCTION_NAME}$(test_${KIND}$) ) error stop '${ERR_MSG_FORE}$ ${ERR_MSG_REAR}$'
+            #:del ERR_MSG_FORE
+            #:del ERR_MSG_REAR
+            #:del FLAG
+
+        end block
+        #:endif
+
+
+        #:endfor
+    end subroutine ${SUBROUTINE_NAME}$
+
+    #:endfor
+end program check
