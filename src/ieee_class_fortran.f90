@@ -13,6 +13,7 @@ module ieee_class_fortran
     use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
     use, intrinsic :: ieee_arithmetic, only: ieee_positive_zero
     use, intrinsic :: ieee_arithmetic, only: ieee_quiet_nan
+    use, intrinsic :: ieee_arithmetic, only: ieee_signaling_nan
     use, intrinsic :: ieee_arithmetic, only: ieee_value
 
 
@@ -26,11 +27,13 @@ module ieee_class_fortran
     public  :: is_ieee_positive_inf
     public  :: is_ieee_positive_zero
     public  :: is_ieee_quiet_nan
+    public  :: is_ieee_signaling_nan
     public  :: set_ieee_negative_inf
     public  :: set_ieee_negative_zero
     public  :: set_ieee_positive_inf
     public  :: set_ieee_positive_zero
     public  :: set_ieee_quiet_nan
+    public  :: set_ieee_signaling_nan
 
 
     !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
@@ -81,6 +84,14 @@ module ieee_class_fortran
     end interface
 
 
+    !> Checks whether `x` is `ieee_signaling_nan`
+    interface is_ieee_signaling_nan
+        module procedure :: is_ieee_signaling_nan_real32
+        module procedure :: is_ieee_signaling_nan_real64
+        module procedure :: is_ieee_signaling_nan_real128
+    end interface
+
+
     !> Substitute `ieee_negative_inf` to `x` using `ieee_value`
     interface set_ieee_negative_inf
         module procedure :: set_ieee_negative_inf_real32
@@ -118,6 +129,14 @@ module ieee_class_fortran
         module procedure :: set_ieee_quiet_nan_real32
         module procedure :: set_ieee_quiet_nan_real64
         module procedure :: set_ieee_quiet_nan_real128
+    end interface
+
+
+    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    interface set_ieee_signaling_nan
+        module procedure :: set_ieee_signaling_nan_real32
+        module procedure :: set_ieee_signaling_nan_real64
+        module procedure :: set_ieee_signaling_nan_real128
     end interface
 
 
@@ -324,6 +343,38 @@ module ieee_class_fortran
 
 
 
+    !> Checks whether `x` is `ieee_signaling_nan`
+    logical pure elemental function is_ieee_signaling_nan_real32(x) result(status)
+
+        real(real32), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_signaling_nan
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_signaling_nan`
+    logical pure elemental function is_ieee_signaling_nan_real64(x) result(status)
+
+        real(real64), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_signaling_nan
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_signaling_nan`
+    logical pure elemental function is_ieee_signaling_nan_real128(x) result(status)
+
+        real(real128), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_signaling_nan
+
+    end function
+
+
+
+
     !> Substitute `ieee_negative_inf` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_inf_real32(x)
 
@@ -478,6 +529,38 @@ module ieee_class_fortran
         real(real128), intent(inout) :: x
 
         x = ieee_value( x = x, class = ieee_quiet_nan )
+
+    end subroutine
+
+
+
+
+    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_signaling_nan_real32(x)
+
+        real(real32), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_signaling_nan )
+
+    end subroutine
+
+
+    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_signaling_nan_real64(x)
+
+        real(real64), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_signaling_nan )
+
+    end subroutine
+
+
+    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_signaling_nan_real128(x)
+
+        real(real128), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_signaling_nan )
 
     end subroutine
 
