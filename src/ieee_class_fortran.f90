@@ -41,14 +41,6 @@ module ieee_class_fortran
     end interface
 
 
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    interface is_ieee_either_zero
-        module procedure :: is_ieee_either_zero_real32
-        module procedure :: is_ieee_either_zero_real64
-        module procedure :: is_ieee_either_zero_real128
-    end interface
-
-
     !> Checks whether `x` is `ieee_negative_inf`
     interface is_ieee_negative_inf
         module procedure :: is_ieee_negative_inf_real32
