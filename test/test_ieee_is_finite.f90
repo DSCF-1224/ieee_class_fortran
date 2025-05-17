@@ -74,6 +74,16 @@ program check
         end block
 
 
+        block
+
+            real(real32) :: test_real32
+
+            call set_ieee_quiet_nan(test_real32)
+            if ( ieee_is_finite(test_real32) ) error stop '; NG; result of set_ieee_quiet_nan(test_real32) must be .false.'
+
+        end block
+
+
     end subroutine test_ieee_is_finite_real32
 
     subroutine test_ieee_is_finite_real64()
@@ -121,6 +131,16 @@ program check
         end block
 
 
+        block
+
+            real(real64) :: test_real64
+
+            call set_ieee_quiet_nan(test_real64)
+            if ( ieee_is_finite(test_real64) ) error stop '; NG; result of set_ieee_quiet_nan(test_real64) must be .false.'
+
+        end block
+
+
     end subroutine test_ieee_is_finite_real64
 
     subroutine test_ieee_is_finite_real128()
@@ -164,6 +184,16 @@ program check
 
             call set_ieee_positive_inf(test_real128)
             if ( ieee_is_finite(test_real128) ) error stop '; NG; result of set_ieee_positive_inf(test_real128) must be .false.'
+
+        end block
+
+
+        block
+
+            real(real128) :: test_real128
+
+            call set_ieee_quiet_nan(test_real128)
+            if ( ieee_is_finite(test_real128) ) error stop '; NG; result of set_ieee_quiet_nan(test_real128) must be .false.'
 
         end block
 
