@@ -86,7 +86,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="100.0% of total for modules and submodules.">183 statements</a>
+                 title="100.0% of total for modules and submodules.">220 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -139,10 +139,12 @@
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_negative_zero">is_ieee_negative_zero</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_positive_inf">is_ieee_positive_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_positive_zero">is_ieee_positive_zero</a>
+            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_quiet_nan">is_ieee_quiet_nan</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_negative_inf">set_ieee_negative_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_negative_zero">set_ieee_negative_zero</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_positive_inf">set_ieee_positive_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_positive_zero">set_ieee_positive_zero</a>
+            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_quiet_nan">set_ieee_quiet_nan</a>
         </div>
       </div>
     </div>
@@ -172,8 +174,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/ieee_arithmetic'>ieee_arithmetic</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/ieee_arithmetic'>ieee_arithmetic</a></li>
               </ul>
             </li>
         </ul>
@@ -900,6 +902,148 @@
 
               <div class="card">
     <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-is_ieee_quiet_nan"></span>
+      <h3>public        interface <a href='../interface/is_ieee_quiet_nan.html'>is_ieee_quiet_nan</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Checks whether <code>x</code> is <code>ieee_quiet_nan</code></p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_quiet_nan_real32(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_quiet_nan</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~16"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_quiet_nan_real64(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_quiet_nan</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~17"></span>
+              real(kind=real64),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_quiet_nan_real128(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_quiet_nan</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~18"></span>
+              real(kind=real128),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
       <span class="anchor" id="interface-set_ieee_negative_inf"></span>
       <h3>public        interface <a href='../interface/set_ieee_negative_inf.html'>set_ieee_negative_inf</a> 
       </h3>
@@ -928,7 +1072,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~16"></span>
+              <span class="anchor" id="variable-x~19"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -966,7 +1110,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~17"></span>
+              <span class="anchor" id="variable-x~20"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1004,7 +1148,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~18"></span>
+              <span class="anchor" id="variable-x~21"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1055,7 +1199,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~19"></span>
+              <span class="anchor" id="variable-x~22"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1093,7 +1237,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~20"></span>
+              <span class="anchor" id="variable-x~23"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1131,7 +1275,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~21"></span>
+              <span class="anchor" id="variable-x~24"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1182,7 +1326,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~22"></span>
+              <span class="anchor" id="variable-x~25"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1220,7 +1364,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~23"></span>
+              <span class="anchor" id="variable-x~26"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1258,7 +1402,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~24"></span>
+              <span class="anchor" id="variable-x~27"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1309,7 +1453,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~25"></span>
+              <span class="anchor" id="variable-x~28"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1347,7 +1491,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~26"></span>
+              <span class="anchor" id="variable-x~29"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1385,7 +1529,134 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~27"></span>
+              <span class="anchor" id="variable-x~30"></span>
+              real(kind=real128),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-set_ieee_quiet_nan"></span>
+      <h3>public        interface <a href='../interface/set_ieee_quiet_nan.html'>set_ieee_quiet_nan</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental subroutine set_ieee_quiet_nan_real32(x)  
+
+    </h3>
+  <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~31"></span>
+              real(kind=real32),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental subroutine set_ieee_quiet_nan_real64(x)  
+
+    </h3>
+  <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~32"></span>
+              real(kind=real64),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental subroutine set_ieee_quiet_nan_real128(x)  
+
+    </h3>
+  <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~33"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
