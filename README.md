@@ -13,6 +13,7 @@ Additional functions for `ieee_class_type`
 |[`is_ieee_negative_zero`](https://dscf-1224.github.io/ieee_class_fortran/interface/is_ieee_negative_zero.html)|Checks whether `x` is `ieee_negative_zero`|
 |[`is_ieee_positive_inf`](https://dscf-1224.github.io/ieee_class_fortran/interface/is_ieee_positive_inf.html)|Checks whether `x` is `ieee_positive_inf`|
 |[`is_ieee_positive_zero`](https://dscf-1224.github.io/ieee_class_fortran/interface/is_ieee_positive_zero.html)|Checks whether `x` is `ieee_positive_zero`|
+|[`is_ieee_quiet_nan`](https://dscf-1224.github.io/ieee_class_fortran/interface/is_ieee_quiet_nan.html)|Checks whether `x` is `ieee_quiet_nan`|
 
 |`subroutine`|description|
 |:-----------|:----------|
@@ -20,5 +21,6 @@ Additional functions for `ieee_class_type`
 |[`set_ieee_negative_zero`](https://dscf-1224.github.io/ieee_class_fortran/interface/set_ieee_negative_zero.html)|Substitute `ieee_negative_zero` to `x` using `ieee_value`|
 |[`set_ieee_positive_inf`](https://dscf-1224.github.io/ieee_class_fortran/interface/set_ieee_positive_inf.html)|Substitute `ieee_positive_inf` to `x` using `ieee_value`|
 |[`set_ieee_positive_zero`](https://dscf-1224.github.io/ieee_class_fortran/interface/set_ieee_positive_zero.html)|Substitute `ieee_positive_zero` to `x` using `ieee_value`|
+|[`set_ieee_quiet_nan`](https://dscf-1224.github.io/ieee_class_fortran/interface/set_ieee_quiet_nan.html)|Substitute `ieee_quiet_nan` to `x` using `ieee_value`|
 
 <!-- EOF -->
