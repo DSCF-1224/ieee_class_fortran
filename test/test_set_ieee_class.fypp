@@ -23,7 +23,7 @@ program check
     print * , compiler_version()
     print * , compiler_options()
 
-    #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
+    #:for IEEE_CLASS_TARGET in SET_IEEE_CLASS_TYPE
     #:if IEEE_CLASS_TARGET != "ieee_either_zero"
     call test_set_${IEEE_CLASS_TARGET}$
     #:endif
@@ -32,7 +32,7 @@ program check
 
     contains
 
-    #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
+    #:for IEEE_CLASS_TARGET in SET_IEEE_CLASS_TYPE
     #:if IEEE_CLASS_TARGET != "ieee_either_zero"
 
 

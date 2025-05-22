@@ -52,8 +52,6 @@ program check
         end block
 
 
-
-
         block
 
             real(real32) :: test_real32
@@ -119,8 +117,6 @@ program check
         end block
 
 
-
-
         block
 
             real(real64) :: test_real64
@@ -184,8 +180,6 @@ program check
             if ( .not. ieee_is_finite(test_real128) ) error stop '; NG; result of set_ieee_negative_zero(test_real128) must be .true.'
 
         end block
-
-
 
 
         block
