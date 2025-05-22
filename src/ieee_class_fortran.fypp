@@ -1,4 +1,26 @@
 #:include "ieee_class_fortran_common.fypp"
+#:set DESCRIPTION_IS_IEEE_EITHER_ZERO = '!> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`'
+#:mute
+
+#:set DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE = '    !> Checks whether `x` is '
+
+#:def DESCRIPTION_IS_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
+    #:if IEEE_CLASS_TYPE != 'ieee_either_zero'
+        #:set DESCRIPTION = DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE + '`' + IEEE_CLASS_TYPE + '`'
+    #:else
+        #:set DESCRIPTION = DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE + 'either `ieee_negative_zero` or `ieee_positive_zero`'
+    #:endif
+    $:DESCRIPTION
+    #:del DESCRIPTION
+#:enddef
+
+#:def DESCRIPTION_SET_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
+    #:set DESCRIPTION = '    !> Substitutes `' + IEEE_CLASS_TYPE + '` to `x` using `ieee_value`'
+    $:DESCRIPTION
+    #:del DESCRIPTION
+#:enddef
+
+#:endmute
 module ieee_class_fortran
 
 
@@ -9,8 +31,8 @@ module ieee_class_fortran
 
     use, intrinsic :: ieee_arithmetic, only: operator(.eq.)
     use, intrinsic :: ieee_arithmetic, only: ieee_class
-    #:for IEEE_CLASS in IEEE_CLASSES
-    use, intrinsic :: ieee_arithmetic, only: ieee_${IEEE_CLASS}$
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+    use, intrinsic :: ieee_arithmetic, only: ${IEEE_CLASS_TYPE}$
     #:endfor
     use, intrinsic :: ieee_arithmetic, only: ieee_value
 
@@ -19,89 +41,72 @@ module ieee_class_fortran
 
 
     private
-    public  :: is_ieee_either_zero
-    #:for IEEE_CLASS in IEEE_CLASSES
-    public  :: is_ieee_${IEEE_CLASS}$
+    #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
+    public  :: is_${IEEE_CLASS_TYPE}$
     #:endfor
-    #:for IEEE_CLASS in IEEE_CLASSES
-    public  :: set_ieee_${IEEE_CLASS}$
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+    public  :: set_${IEEE_CLASS_TYPE}$
     #:endfor
 
+    #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
 
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    #:set INTERFACE_NAME = "is_ieee_either_zero"
+    #:set INTERFACE_NAME = "is_" + IEEE_CLASS_TYPE
+    $:DESCRIPTION_IS_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
+    interface ${INTERFACE_NAME}$
+    #:for KIND in REAL_KINDS
+        module procedure :: ${INTERFACE_NAME}$_${KIND}$
+    #:endfor
+    end interface
+    #:del INTERFACE_NAME
+
+    #:endfor
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+
+    $:DESCRIPTION_SET_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
+    #:set INTERFACE_NAME = "set_" + IEEE_CLASS_TYPE
     interface ${INTERFACE_NAME}$
     #:for REAL_KIND in REAL_KINDS
         module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
     #:endfor
     end interface
-
-    #:for IEEE_CLASS in IEEE_CLASSES
-
-    !> Checks whether `x` is `ieee_${IEEE_CLASS}$`
-    #:set INTERFACE_NAME = "is_ieee_" + IEEE_CLASS
-    interface ${INTERFACE_NAME}$
-    #:for REAL_KIND in REAL_KINDS
-        module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
-    #:endfor
-    end interface
-
-    #:endfor
-    #:for IEEE_CLASS in IEEE_CLASSES
-
-    !> Substitute `ieee_${IEEE_CLASS}$` to `x` using `ieee_value`
-    #:set INTERFACE_NAME = "set_ieee_" + IEEE_CLASS
-    interface ${INTERFACE_NAME}$
-    #:for REAL_KIND in REAL_KINDS
-        module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
-    #:endfor
-    end interface
+    #:del INTERFACE_NAME
 
     #:endfor
 
     contains
+    #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
 
-    #:for REAL_KIND in REAL_KINDS
+    #:for KIND in REAL_KINDS
 
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    logical pure elemental function is_ieee_either_zero_${REAL_KIND}$(x) result(status)
+    $:DESCRIPTION_IS_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
+    logical pure elemental function is_${IEEE_CLASS_TYPE}$_${KIND}$(x) result(status)
 
-        real(${REAL_KIND}$), intent(in) :: x
+        real(${KIND}$), intent(in) :: x
 
+        #:if IEEE_CLASS_TYPE != 'ieee_either_zero'
+        status = ieee_class(x) .eq. ${IEEE_CLASS_TYPE}$
+        #:else
         associate( ieee_class_x => ieee_class(x) )
             status =      (ieee_class_x .eq. ieee_negative_zero) &!
             &        .or. (ieee_class_x .eq. ieee_positive_zero)
         end associate
-
-    end function
-
-    #:endfor
-    #:for IEEE_CLASS in IEEE_CLASSES
-
-    #:for REAL_KIND in REAL_KINDS
-
-    !> Checks whether `x` is `ieee_${IEEE_CLASS}$`
-    logical pure elemental function is_ieee_${IEEE_CLASS}$_${REAL_KIND}$(x) result(status)
-
-        real(${REAL_KIND}$), intent(in) :: x
-
-        status = ieee_class(x) .eq. ieee_${IEEE_CLASS}$
+        #:endif
 
     end function
 
     #:endfor
 
     #:endfor
-    #:for IEEE_CLASS in IEEE_CLASSES
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
 
     #:for REAL_KIND in REAL_KINDS
 
-    !> Substitute `ieee_${IEEE_CLASS}$` to `x` using `ieee_value`
-    pure elemental subroutine set_ieee_${IEEE_CLASS}$_${REAL_KIND}$(x)
+    $:DESCRIPTION_SET_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
+    pure elemental subroutine set_${IEEE_CLASS_TYPE}$_${REAL_KIND}$(x)
 
         real(${REAL_KIND}$), intent(inout) :: x
 
-        x = ieee_value( x = x, class = ieee_${IEEE_CLASS}$ )
+        x = ieee_value( x = x, class = ${IEEE_CLASS_TYPE}$ )
 
     end subroutine
 
