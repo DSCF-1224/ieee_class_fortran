@@ -1,12 +1,4 @@
-#:mute
-
-#! real kinds
-#:set REAL_KINDS = ['real32', 'real64', 'real128']
-
-#! ieee class
-#:set IEEE_CLASSES = ['negative_inf', 'negative_zero', 'positive_inf', 'positive_zero', 'quiet_nan', 'signaling_nan']
-
-#:endmute
+#:include "ieee_class_fortran_common.fypp"
 module ieee_class_fortran
 
 
