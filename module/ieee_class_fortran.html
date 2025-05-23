@@ -134,17 +134,17 @@
       </a>
       <div id="inters-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_either_zero">is_ieee_either_zero</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_negative_inf">is_ieee_negative_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_negative_zero">is_ieee_negative_zero</a>
-            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_positive_inf">is_ieee_positive_inf</a>
+            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_either_zero">is_ieee_either_zero</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_positive_zero">is_ieee_positive_zero</a>
+            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_positive_inf">is_ieee_positive_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_quiet_nan">is_ieee_quiet_nan</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-is_ieee_signaling_nan">is_ieee_signaling_nan</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_negative_inf">set_ieee_negative_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_negative_zero">set_ieee_negative_zero</a>
-            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_positive_inf">set_ieee_positive_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_positive_zero">set_ieee_positive_zero</a>
+            <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_positive_inf">set_ieee_positive_inf</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_quiet_nan">set_ieee_quiet_nan</a>
             <a class="list-group-item" href="../module/ieee_class_fortran.html#interface-set_ieee_signaling_nan">set_ieee_signaling_nan</a>
         </div>
@@ -194,148 +194,6 @@
           <h2>Interfaces</h2>
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-is_ieee_either_zero"></span>
-      <h3>public        interface <a href='../interface/is_ieee_either_zero.html'>is_ieee_either_zero</a> 
-      </h3>
-    </div>
-      <div class="card-body">
-        <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
-      </div>
-    <ul class="list-group">
-          <li class="list-group-item">
-                <h3>
-    private pure elemental function is_ieee_either_zero_real32(x) result(status)  
-
-    </h3>
-  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-x"></span>
-              real(kind=real32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>x</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>logical</small>
-    </h4>
-    
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private pure elemental function is_ieee_either_zero_real64(x) result(status)  
-
-    </h3>
-  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-x~2"></span>
-              real(kind=real64),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>x</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>logical</small>
-    </h4>
-    
-
-          </li>
-          <li class="list-group-item">
-                <h3>
-    private pure elemental function is_ieee_either_zero_real128(x) result(status)  
-
-    </h3>
-  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-x~3"></span>
-              real(kind=real128),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>x</strong></td>
-            <td>
-                
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>logical</small>
-    </h4>
-    
-
-          </li>
-    </ul>
-  </div>
-
-              <div class="card">
-    <div class="card-header bg-light codesum">
       <span class="anchor" id="interface-is_ieee_negative_inf"></span>
       <h3>public        interface <a href='../interface/is_ieee_negative_inf.html'>is_ieee_negative_inf</a> 
       </h3>
@@ -364,7 +222,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~4"></span>
+              <span class="anchor" id="variable-x"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -407,7 +265,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~5"></span>
+              <span class="anchor" id="variable-x~2"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -450,7 +308,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~6"></span>
+              <span class="anchor" id="variable-x~3"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -506,7 +364,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~7"></span>
+              <span class="anchor" id="variable-x~4"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -549,7 +407,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~8"></span>
+              <span class="anchor" id="variable-x~5"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -592,7 +450,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~9"></span>
+              <span class="anchor" id="variable-x~6"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -620,20 +478,20 @@
 
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-is_ieee_positive_inf"></span>
-      <h3>public        interface <a href='../interface/is_ieee_positive_inf.html'>is_ieee_positive_inf</a> 
+      <span class="anchor" id="interface-is_ieee_either_zero"></span>
+      <h3>public        interface <a href='../interface/is_ieee_either_zero.html'>is_ieee_either_zero</a> 
       </h3>
     </div>
       <div class="card-body">
-        <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+        <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    private pure elemental function is_ieee_positive_inf_real32(x) result(status)  
+    private pure elemental function is_ieee_either_zero_real32(x) result(status)  
 
     </h3>
-  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -648,7 +506,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~10"></span>
+              <span class="anchor" id="variable-x~7"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -673,10 +531,10 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental function is_ieee_positive_inf_real64(x) result(status)  
+    private pure elemental function is_ieee_either_zero_real64(x) result(status)  
 
     </h3>
-  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -691,7 +549,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~11"></span>
+              <span class="anchor" id="variable-x~8"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -716,10 +574,10 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental function is_ieee_positive_inf_real128(x) result(status)  
+    private pure elemental function is_ieee_either_zero_real128(x) result(status)  
 
     </h3>
-  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -734,7 +592,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~12"></span>
+              <span class="anchor" id="variable-x~9"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -790,7 +648,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~13"></span>
+              <span class="anchor" id="variable-x~10"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -833,7 +691,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~14"></span>
+              <span class="anchor" id="variable-x~11"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -862,6 +720,148 @@
 
     </h3>
   <p>Checks whether <code>x</code> is <code>ieee_positive_zero</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~12"></span>
+              real(kind=real128),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-is_ieee_positive_inf"></span>
+      <h3>public        interface <a href='../interface/is_ieee_positive_inf.html'>is_ieee_positive_inf</a> 
+      </h3>
+    </div>
+      <div class="card-body">
+        <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_positive_inf_real32(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~13"></span>
+              real(kind=real32),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_positive_inf_real64(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~14"></span>
+              real(kind=real64),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_positive_inf_real128(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1193,7 +1193,7 @@
       </h3>
     </div>
       <div class="card-body">
-        <p>Substitute <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+        <p>Substitutes <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
@@ -1201,7 +1201,7 @@
     private pure elemental subroutine set_ieee_negative_inf_real32(x)  
 
     </h3>
-  <p>Substitute <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1239,7 +1239,7 @@
     private pure elemental subroutine set_ieee_negative_inf_real64(x)  
 
     </h3>
-  <p>Substitute <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1277,7 +1277,7 @@
     private pure elemental subroutine set_ieee_negative_inf_real128(x)  
 
     </h3>
-  <p>Substitute <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_negative_inf</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1320,7 +1320,7 @@
       </h3>
     </div>
       <div class="card-body">
-        <p>Substitute <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+        <p>Substitutes <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
@@ -1328,7 +1328,7 @@
     private pure elemental subroutine set_ieee_negative_zero_real32(x)  
 
     </h3>
-  <p>Substitute <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1366,7 +1366,7 @@
     private pure elemental subroutine set_ieee_negative_zero_real64(x)  
 
     </h3>
-  <p>Substitute <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1404,7 +1404,7 @@
     private pure elemental subroutine set_ieee_negative_zero_real128(x)  
 
     </h3>
-  <p>Substitute <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_negative_zero</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1442,20 +1442,20 @@
 
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-set_ieee_positive_inf"></span>
-      <h3>public        interface <a href='../interface/set_ieee_positive_inf.html'>set_ieee_positive_inf</a> 
+      <span class="anchor" id="interface-set_ieee_positive_zero"></span>
+      <h3>public        interface <a href='../interface/set_ieee_positive_zero.html'>set_ieee_positive_zero</a> 
       </h3>
     </div>
       <div class="card-body">
-        <p>Substitute <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+        <p>Substitutes <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    private pure elemental subroutine set_ieee_positive_inf_real32(x)  
+    private pure elemental subroutine set_ieee_positive_zero_real32(x)  
 
     </h3>
-  <p>Substitute <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1490,10 +1490,10 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental subroutine set_ieee_positive_inf_real64(x)  
+    private pure elemental subroutine set_ieee_positive_zero_real64(x)  
 
     </h3>
-  <p>Substitute <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1528,10 +1528,10 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental subroutine set_ieee_positive_inf_real128(x)  
+    private pure elemental subroutine set_ieee_positive_zero_real128(x)  
 
     </h3>
-  <p>Substitute <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1569,20 +1569,20 @@
 
               <div class="card">
     <div class="card-header bg-light codesum">
-      <span class="anchor" id="interface-set_ieee_positive_zero"></span>
-      <h3>public        interface <a href='../interface/set_ieee_positive_zero.html'>set_ieee_positive_zero</a> 
+      <span class="anchor" id="interface-set_ieee_positive_inf"></span>
+      <h3>public        interface <a href='../interface/set_ieee_positive_inf.html'>set_ieee_positive_inf</a> 
       </h3>
     </div>
       <div class="card-body">
-        <p>Substitute <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+        <p>Substitutes <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    private pure elemental subroutine set_ieee_positive_zero_real32(x)  
+    private pure elemental subroutine set_ieee_positive_inf_real32(x)  
 
     </h3>
-  <p>Substitute <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1617,10 +1617,10 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental subroutine set_ieee_positive_zero_real64(x)  
+    private pure elemental subroutine set_ieee_positive_inf_real64(x)  
 
     </h3>
-  <p>Substitute <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1655,10 +1655,10 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    private pure elemental subroutine set_ieee_positive_zero_real128(x)  
+    private pure elemental subroutine set_ieee_positive_inf_real128(x)  
 
     </h3>
-  <p>Substitute <code>ieee_positive_zero</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_positive_inf</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1701,7 +1701,7 @@
       </h3>
     </div>
       <div class="card-body">
-        <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+        <p>Substitutes <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
@@ -1709,7 +1709,7 @@
     private pure elemental subroutine set_ieee_quiet_nan_real32(x)  
 
     </h3>
-  <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1747,7 +1747,7 @@
     private pure elemental subroutine set_ieee_quiet_nan_real64(x)  
 
     </h3>
-  <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1785,7 +1785,7 @@
     private pure elemental subroutine set_ieee_quiet_nan_real128(x)  
 
     </h3>
-  <p>Substitute <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_quiet_nan</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1828,7 +1828,7 @@
       </h3>
     </div>
       <div class="card-body">
-        <p>Substitute <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+        <p>Substitutes <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
       </div>
     <ul class="list-group">
           <li class="list-group-item">
@@ -1836,7 +1836,7 @@
     private pure elemental subroutine set_ieee_signaling_nan_real32(x)  
 
     </h3>
-  <p>Substitute <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1874,7 +1874,7 @@
     private pure elemental subroutine set_ieee_signaling_nan_real64(x)  
 
     </h3>
-  <p>Substitute <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1912,7 +1912,7 @@
     private pure elemental subroutine set_ieee_signaling_nan_real128(x)  
 
     </h3>
-  <p>Substitute <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
+  <p>Substitutes <code>ieee_signaling_nan</code> to <code>x</code> using <code>ieee_value</code></p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">

@@ -10,8 +10,8 @@ module ieee_class_fortran
     use, intrinsic :: ieee_arithmetic, only: ieee_class
     use, intrinsic :: ieee_arithmetic, only: ieee_negative_inf
     use, intrinsic :: ieee_arithmetic, only: ieee_negative_zero
-    use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
     use, intrinsic :: ieee_arithmetic, only: ieee_positive_zero
+    use, intrinsic :: ieee_arithmetic, only: ieee_positive_inf
     use, intrinsic :: ieee_arithmetic, only: ieee_quiet_nan
     use, intrinsic :: ieee_arithmetic, only: ieee_signaling_nan
     use, intrinsic :: ieee_arithmetic, only: ieee_value
@@ -21,27 +21,19 @@ module ieee_class_fortran
 
 
     private
-    public  :: is_ieee_either_zero
     public  :: is_ieee_negative_inf
     public  :: is_ieee_negative_zero
-    public  :: is_ieee_positive_inf
+    public  :: is_ieee_either_zero
     public  :: is_ieee_positive_zero
+    public  :: is_ieee_positive_inf
     public  :: is_ieee_quiet_nan
     public  :: is_ieee_signaling_nan
     public  :: set_ieee_negative_inf
     public  :: set_ieee_negative_zero
-    public  :: set_ieee_positive_inf
     public  :: set_ieee_positive_zero
+    public  :: set_ieee_positive_inf
     public  :: set_ieee_quiet_nan
     public  :: set_ieee_signaling_nan
-
-
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    interface is_ieee_either_zero
-        module procedure :: is_ieee_either_zero_real32
-        module procedure :: is_ieee_either_zero_real64
-        module procedure :: is_ieee_either_zero_real128
-    end interface
 
 
     !> Checks whether `x` is `ieee_negative_inf`
@@ -60,11 +52,11 @@ module ieee_class_fortran
     end interface
 
 
-    !> Checks whether `x` is `ieee_positive_inf`
-    interface is_ieee_positive_inf
-        module procedure :: is_ieee_positive_inf_real32
-        module procedure :: is_ieee_positive_inf_real64
-        module procedure :: is_ieee_positive_inf_real128
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    interface is_ieee_either_zero
+        module procedure :: is_ieee_either_zero_real32
+        module procedure :: is_ieee_either_zero_real64
+        module procedure :: is_ieee_either_zero_real128
     end interface
 
 
@@ -73,6 +65,14 @@ module ieee_class_fortran
         module procedure :: is_ieee_positive_zero_real32
         module procedure :: is_ieee_positive_zero_real64
         module procedure :: is_ieee_positive_zero_real128
+    end interface
+
+
+    !> Checks whether `x` is `ieee_positive_inf`
+    interface is_ieee_positive_inf
+        module procedure :: is_ieee_positive_inf_real32
+        module procedure :: is_ieee_positive_inf_real64
+        module procedure :: is_ieee_positive_inf_real128
     end interface
 
 
@@ -92,7 +92,7 @@ module ieee_class_fortran
     end interface
 
 
-    !> Substitute `ieee_negative_inf` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_inf` to `x` using `ieee_value`
     interface set_ieee_negative_inf
         module procedure :: set_ieee_negative_inf_real32
         module procedure :: set_ieee_negative_inf_real64
@@ -100,7 +100,7 @@ module ieee_class_fortran
     end interface
 
 
-    !> Substitute `ieee_negative_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_zero` to `x` using `ieee_value`
     interface set_ieee_negative_zero
         module procedure :: set_ieee_negative_zero_real32
         module procedure :: set_ieee_negative_zero_real64
@@ -108,15 +108,7 @@ module ieee_class_fortran
     end interface
 
 
-    !> Substitute `ieee_positive_inf` to `x` using `ieee_value`
-    interface set_ieee_positive_inf
-        module procedure :: set_ieee_positive_inf_real32
-        module procedure :: set_ieee_positive_inf_real64
-        module procedure :: set_ieee_positive_inf_real128
-    end interface
-
-
-    !> Substitute `ieee_positive_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_positive_zero` to `x` using `ieee_value`
     interface set_ieee_positive_zero
         module procedure :: set_ieee_positive_zero_real32
         module procedure :: set_ieee_positive_zero_real64
@@ -124,7 +116,15 @@ module ieee_class_fortran
     end interface
 
 
-    !> Substitute `ieee_quiet_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_positive_inf` to `x` using `ieee_value`
+    interface set_ieee_positive_inf
+        module procedure :: set_ieee_positive_inf_real32
+        module procedure :: set_ieee_positive_inf_real64
+        module procedure :: set_ieee_positive_inf_real128
+    end interface
+
+
+    !> Substitutes `ieee_quiet_nan` to `x` using `ieee_value`
     interface set_ieee_quiet_nan
         module procedure :: set_ieee_quiet_nan_real32
         module procedure :: set_ieee_quiet_nan_real64
@@ -132,7 +132,7 @@ module ieee_class_fortran
     end interface
 
 
-    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_signaling_nan` to `x` using `ieee_value`
     interface set_ieee_signaling_nan
         module procedure :: set_ieee_signaling_nan_real32
         module procedure :: set_ieee_signaling_nan_real64
@@ -141,46 +141,6 @@ module ieee_class_fortran
 
 
     contains
-
-
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    logical pure elemental function is_ieee_either_zero_real32(x) result(status)
-
-        real(real32), intent(in) :: x
-
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
-
-    end function
-
-
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    logical pure elemental function is_ieee_either_zero_real64(x) result(status)
-
-        real(real64), intent(in) :: x
-
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
-
-    end function
-
-
-    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
-    logical pure elemental function is_ieee_either_zero_real128(x) result(status)
-
-        real(real128), intent(in) :: x
-
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
-
-    end function
-
 
 
     !> Checks whether `x` is `ieee_negative_inf`
@@ -247,32 +207,41 @@ module ieee_class_fortran
 
 
 
-    !> Checks whether `x` is `ieee_positive_inf`
-    logical pure elemental function is_ieee_positive_inf_real32(x) result(status)
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_inf
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
 
     end function
 
 
-    !> Checks whether `x` is `ieee_positive_inf`
-    logical pure elemental function is_ieee_positive_inf_real64(x) result(status)
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_real64(x) result(status)
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_inf
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
 
     end function
 
 
-    !> Checks whether `x` is `ieee_positive_inf`
-    logical pure elemental function is_ieee_positive_inf_real128(x) result(status)
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_real128(x) result(status)
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_inf
+        associate( ieee_class_x => ieee_class(x) )
+            status =      (ieee_class_x .eq. ieee_negative_zero) &!
+            &        .or. (ieee_class_x .eq. ieee_positive_zero)
+        end associate
 
     end function
 
@@ -305,6 +274,38 @@ module ieee_class_fortran
         real(real128), intent(in) :: x
 
         status = ieee_class(x) .eq. ieee_positive_zero
+
+    end function
+
+
+
+
+    !> Checks whether `x` is `ieee_positive_inf`
+    logical pure elemental function is_ieee_positive_inf_real32(x) result(status)
+
+        real(real32), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_positive_inf
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_positive_inf`
+    logical pure elemental function is_ieee_positive_inf_real64(x) result(status)
+
+        real(real64), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_positive_inf
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_positive_inf`
+    logical pure elemental function is_ieee_positive_inf_real128(x) result(status)
+
+        real(real128), intent(in) :: x
+
+        status = ieee_class(x) .eq. ieee_positive_inf
 
     end function
 
@@ -375,7 +376,7 @@ module ieee_class_fortran
 
 
 
-    !> Substitute `ieee_negative_inf` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_inf` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_inf_real32(x)
 
         real(real32), intent(inout) :: x
@@ -385,7 +386,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_negative_inf` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_inf` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_inf_real64(x)
 
         real(real64), intent(inout) :: x
@@ -395,7 +396,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_negative_inf` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_inf` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_inf_real128(x)
 
         real(real128), intent(inout) :: x
@@ -407,7 +408,7 @@ module ieee_class_fortran
 
 
 
-    !> Substitute `ieee_negative_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_zero` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_zero_real32(x)
 
         real(real32), intent(inout) :: x
@@ -417,7 +418,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_negative_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_zero` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_zero_real64(x)
 
         real(real64), intent(inout) :: x
@@ -427,7 +428,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_negative_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_negative_zero` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_negative_zero_real128(x)
 
         real(real128), intent(inout) :: x
@@ -439,39 +440,7 @@ module ieee_class_fortran
 
 
 
-    !> Substitute `ieee_positive_inf` to `x` using `ieee_value`
-    pure elemental subroutine set_ieee_positive_inf_real32(x)
-
-        real(real32), intent(inout) :: x
-
-        x = ieee_value( x = x, class = ieee_positive_inf )
-
-    end subroutine
-
-
-    !> Substitute `ieee_positive_inf` to `x` using `ieee_value`
-    pure elemental subroutine set_ieee_positive_inf_real64(x)
-
-        real(real64), intent(inout) :: x
-
-        x = ieee_value( x = x, class = ieee_positive_inf )
-
-    end subroutine
-
-
-    !> Substitute `ieee_positive_inf` to `x` using `ieee_value`
-    pure elemental subroutine set_ieee_positive_inf_real128(x)
-
-        real(real128), intent(inout) :: x
-
-        x = ieee_value( x = x, class = ieee_positive_inf )
-
-    end subroutine
-
-
-
-
-    !> Substitute `ieee_positive_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_positive_zero` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_positive_zero_real32(x)
 
         real(real32), intent(inout) :: x
@@ -481,7 +450,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_positive_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_positive_zero` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_positive_zero_real64(x)
 
         real(real64), intent(inout) :: x
@@ -491,7 +460,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_positive_zero` to `x` using `ieee_value`
+    !> Substitutes `ieee_positive_zero` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_positive_zero_real128(x)
 
         real(real128), intent(inout) :: x
@@ -503,7 +472,39 @@ module ieee_class_fortran
 
 
 
-    !> Substitute `ieee_quiet_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_positive_inf` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_positive_inf_real32(x)
+
+        real(real32), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_positive_inf )
+
+    end subroutine
+
+
+    !> Substitutes `ieee_positive_inf` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_positive_inf_real64(x)
+
+        real(real64), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_positive_inf )
+
+    end subroutine
+
+
+    !> Substitutes `ieee_positive_inf` to `x` using `ieee_value`
+    pure elemental subroutine set_ieee_positive_inf_real128(x)
+
+        real(real128), intent(inout) :: x
+
+        x = ieee_value( x = x, class = ieee_positive_inf )
+
+    end subroutine
+
+
+
+
+    !> Substitutes `ieee_quiet_nan` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_quiet_nan_real32(x)
 
         real(real32), intent(inout) :: x
@@ -513,7 +514,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_quiet_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_quiet_nan` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_quiet_nan_real64(x)
 
         real(real64), intent(inout) :: x
@@ -523,7 +524,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_quiet_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_quiet_nan` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_quiet_nan_real128(x)
 
         real(real128), intent(inout) :: x
@@ -535,7 +536,7 @@ module ieee_class_fortran
 
 
 
-    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_signaling_nan` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_signaling_nan_real32(x)
 
         real(real32), intent(inout) :: x
@@ -545,7 +546,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_signaling_nan` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_signaling_nan_real64(x)
 
         real(real64), intent(inout) :: x
@@ -555,7 +556,7 @@ module ieee_class_fortran
     end subroutine
 
 
-    !> Substitute `ieee_signaling_nan` to `x` using `ieee_value`
+    !> Substitutes `ieee_signaling_nan` to `x` using `ieee_value`
     pure elemental subroutine set_ieee_signaling_nan_real128(x)
 
         real(real128), intent(inout) :: x
