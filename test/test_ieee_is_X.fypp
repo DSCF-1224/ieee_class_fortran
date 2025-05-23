@@ -48,8 +48,7 @@ program check
     subroutine ${SUBROUTINE_NAME}$()
 
 
-        #:for IEEE_CLASS_TARGET in IEEE_CLASSES_TARGET
-        #:if IEEE_CLASS_TARGET != "ieee_either_zero"
+        #:for IEEE_CLASS_TARGET in SET_IEEE_CLASS_TYPE
         #:set TEST_TARGET_SUBROUTINE_NAME = "set_" + IEEE_CLASS_TARGET
         block
 
@@ -101,7 +100,6 @@ program check
             #:del FLAG
 
         end block
-        #:endif
 
 
         #:endfor

@@ -1,0 +1,13 @@
+#:mute
+
+#! real kinds
+#:set REAL_KINDS = ['real32', 'real64', 'real128']
+
+#! ieee class
+#:set NEGATIVE_IEEE_CLASSES = [ 'ieee_negative_inf'  , 'ieee_negative_zero' ]
+#:set POSITIVE_IEEE_CLASSES = [ 'ieee_positive_zero' , 'ieee_positive_inf'  ]
+#:set NAN_IEEE_CLASSES      = [ 'ieee_quiet_nan'     , 'ieee_signaling_nan' ]
+#:set IS_IEEE_CLASS_TYPE    = NEGATIVE_IEEE_CLASSES + ['ieee_either_zero'] + POSITIVE_IEEE_CLASSES + NAN_IEEE_CLASSES
+#:set SET_IEEE_CLASS_TYPE   = NEGATIVE_IEEE_CLASSES                        + POSITIVE_IEEE_CLASSES + NAN_IEEE_CLASSES
+
+#:endmute

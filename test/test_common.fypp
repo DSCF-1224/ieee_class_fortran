@@ -5,16 +5,7 @@
 
 #! ieee class
 
-#:set IEEE_CLASSES_TARGET = &
-    [ &
-        "ieee_negative_inf"  , &
-        "ieee_negative_zero" , &
-        "ieee_either_zero"   , &
-        "ieee_positive_zero" , &
-        "ieee_positive_inf"  , &
-        "ieee_quiet_nan"     , &
-        "ieee_signaling_nan"   &
-    ]
+#:include '../src/ieee_class_fortran_common.fypp'
 
 #:set IEEE_CLASSES_ARG = &
     [ &
