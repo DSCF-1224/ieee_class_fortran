@@ -65,8 +65,8 @@ module ieee_class_fortran
     $:DESCRIPTION_SET_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
     #:set INTERFACE_NAME = "set_" + IEEE_CLASS_TYPE
     interface ${INTERFACE_NAME}$
-    #:for REAL_KIND in REAL_KINDS
-        module procedure :: ${INTERFACE_NAME}$_${REAL_KIND}$
+    #:for KIND in REAL_KINDS
+        module procedure :: ${INTERFACE_NAME}$_${KIND}$
     #:endfor
     end interface
     #:del INTERFACE_NAME
@@ -99,12 +99,12 @@ module ieee_class_fortran
     #:endfor
     #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
 
-    #:for REAL_KIND in REAL_KINDS
+    #:for KIND in REAL_KINDS
 
     $:DESCRIPTION_SET_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
-    pure elemental subroutine set_${IEEE_CLASS_TYPE}$_${REAL_KIND}$(x)
+    pure elemental subroutine set_${IEEE_CLASS_TYPE}$_${KIND}$(x)
 
-        real(${REAL_KIND}$), intent(inout) :: x
+        real(${KIND}$), intent(inout) :: x
 
         x = ieee_value( x = x, class = ${IEEE_CLASS_TYPE}$ )
 
