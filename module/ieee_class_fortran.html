@@ -86,7 +86,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="100.0% of total for modules and submodules.">257 statements</a>
+                 title="100.0% of total for modules and submodules.">287 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -176,8 +176,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/ieee_arithmetic'>ieee_arithmetic</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
               </ul>
             </li>
         </ul>
@@ -204,7 +204,7 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    private pure elemental function is_ieee_negative_inf_real32(x) result(status)  
+    private pure elemental function is_ieee_negative_inf_class(x) result(status)  
 
     </h3>
   <p>Checks whether <code>x</code> is <code>ieee_negative_inf</code></p>
@@ -223,6 +223,49 @@
         <tr>
             <td>
               <span class="anchor" id="variable-x"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function is_ieee_negative_inf_real32(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_negative_inf</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~2"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -265,7 +308,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~2"></span>
+              <span class="anchor" id="variable-x~3"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -308,7 +351,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~3"></span>
+              <span class="anchor" id="variable-x~4"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -346,6 +389,49 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
+    private pure elemental function is_ieee_negative_zero_class(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_negative_zero</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~5"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
     private pure elemental function is_ieee_negative_zero_real32(x) result(status)  
 
     </h3>
@@ -364,7 +450,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~4"></span>
+              <span class="anchor" id="variable-x~6"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -407,7 +493,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~5"></span>
+              <span class="anchor" id="variable-x~7"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -450,7 +536,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~6"></span>
+              <span class="anchor" id="variable-x~8"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -488,6 +574,49 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
+    private pure elemental function is_ieee_either_zero_class(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~9"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
     private pure elemental function is_ieee_either_zero_real32(x) result(status)  
 
     </h3>
@@ -506,7 +635,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~7"></span>
+              <span class="anchor" id="variable-x~10"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -549,7 +678,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~8"></span>
+              <span class="anchor" id="variable-x~11"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -592,7 +721,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~9"></span>
+              <span class="anchor" id="variable-x~12"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -630,6 +759,49 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
+    private pure elemental function is_ieee_positive_zero_class(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_positive_zero</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~13"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
     private pure elemental function is_ieee_positive_zero_real32(x) result(status)  
 
     </h3>
@@ -648,7 +820,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~10"></span>
+              <span class="anchor" id="variable-x~14"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -691,7 +863,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~11"></span>
+              <span class="anchor" id="variable-x~15"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -734,7 +906,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~12"></span>
+              <span class="anchor" id="variable-x~16"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -772,6 +944,49 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
+    private pure elemental function is_ieee_positive_inf_class(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_positive_inf</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~17"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
     private pure elemental function is_ieee_positive_inf_real32(x) result(status)  
 
     </h3>
@@ -790,7 +1005,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~13"></span>
+              <span class="anchor" id="variable-x~18"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -833,7 +1048,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~14"></span>
+              <span class="anchor" id="variable-x~19"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -876,7 +1091,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~15"></span>
+              <span class="anchor" id="variable-x~20"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -914,6 +1129,49 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
+    private pure elemental function is_ieee_quiet_nan_class(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_quiet_nan</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~21"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
     private pure elemental function is_ieee_quiet_nan_real32(x) result(status)  
 
     </h3>
@@ -932,7 +1190,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~16"></span>
+              <span class="anchor" id="variable-x~22"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -975,7 +1233,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~17"></span>
+              <span class="anchor" id="variable-x~23"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -1018,7 +1276,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~18"></span>
+              <span class="anchor" id="variable-x~24"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -1056,6 +1314,49 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
+    private pure elemental function is_ieee_signaling_nan_class(x) result(status)  
+
+    </h3>
+  <p>Checks whether <code>x</code> is <code>ieee_signaling_nan</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~25"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
     private pure elemental function is_ieee_signaling_nan_real32(x) result(status)  
 
     </h3>
@@ -1074,7 +1375,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~19"></span>
+              <span class="anchor" id="variable-x~26"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -1117,7 +1418,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~20"></span>
+              <span class="anchor" id="variable-x~27"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -1160,7 +1461,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~21"></span>
+              <span class="anchor" id="variable-x~28"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>
@@ -1216,7 +1517,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~22"></span>
+              <span class="anchor" id="variable-x~29"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1254,7 +1555,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~23"></span>
+              <span class="anchor" id="variable-x~30"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1292,7 +1593,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~24"></span>
+              <span class="anchor" id="variable-x~31"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1343,7 +1644,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~25"></span>
+              <span class="anchor" id="variable-x~32"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1381,7 +1682,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~26"></span>
+              <span class="anchor" id="variable-x~33"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1419,7 +1720,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~27"></span>
+              <span class="anchor" id="variable-x~34"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1470,7 +1771,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~28"></span>
+              <span class="anchor" id="variable-x~35"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1508,7 +1809,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~29"></span>
+              <span class="anchor" id="variable-x~36"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1546,7 +1847,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~30"></span>
+              <span class="anchor" id="variable-x~37"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1597,7 +1898,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~31"></span>
+              <span class="anchor" id="variable-x~38"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1635,7 +1936,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~32"></span>
+              <span class="anchor" id="variable-x~39"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1673,7 +1974,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~33"></span>
+              <span class="anchor" id="variable-x~40"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1724,7 +2025,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~34"></span>
+              <span class="anchor" id="variable-x~41"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1762,7 +2063,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~35"></span>
+              <span class="anchor" id="variable-x~42"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1800,7 +2101,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~36"></span>
+              <span class="anchor" id="variable-x~43"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>
@@ -1851,7 +2152,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~37"></span>
+              <span class="anchor" id="variable-x~44"></span>
               real(kind=real32),
             </td>
 <td>intent(inout)</td>
@@ -1889,7 +2190,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~38"></span>
+              <span class="anchor" id="variable-x~45"></span>
               real(kind=real64),
             </td>
 <td>intent(inout)</td>
@@ -1927,7 +2228,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~39"></span>
+              <span class="anchor" id="variable-x~46"></span>
               real(kind=real128),
             </td>
 <td>intent(inout)</td>

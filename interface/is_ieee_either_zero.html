@@ -86,7 +86,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 7.7% of total for procedures.</p>Including implementation: 23 statements, 35.4% of total for procedures.">5 statements</a>
+                 title="<p> 8.3% of total for procedures.</p>Including implementation: 22 statements, 30.6% of total for procedures.">6 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -145,6 +145,7 @@
       </a>
       <div id="modprocs-0" class="collapse">
         <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../interface/is_ieee_either_zero.html#moduleprocedure-is_ieee_either_zero_class">is_ieee_either_zero_class</a>
             <a class="list-group-item" href="../interface/is_ieee_either_zero.html#moduleprocedure-is_ieee_either_zero_real32">is_ieee_either_zero_real32</a>
             <a class="list-group-item" href="../interface/is_ieee_either_zero.html#moduleprocedure-is_ieee_either_zero_real64">is_ieee_either_zero_real64</a>
             <a class="list-group-item" href="../interface/is_ieee_either_zero.html#moduleprocedure-is_ieee_either_zero_real128">is_ieee_either_zero_real128</a>
@@ -167,6 +168,50 @@
 
         <h2>Module Procedures</h2>
             <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-is_ieee_either_zero_class"></span> <h3>private pure elemental function is_ieee_either_zero_class(x) result(status)  
+</h3></div>
+    <div class="card-body">
+        <p>Checks whether <code>x</code> is either <code>ieee_negative_zero</code> or <code>ieee_positive_zero</code></p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~9"></span>
+              type(ieee_class_type),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>logical</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+            <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-is_ieee_either_zero_real32"></span> <h3>private pure elemental function is_ieee_either_zero_real32(x) result(status)  
 </h3></div>
     <div class="card-body">
@@ -185,7 +230,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~7"></span>
+              <span class="anchor" id="variable-x~10"></span>
               real(kind=real32),
             </td>
 <td>intent(in)</td>
@@ -229,7 +274,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~8"></span>
+              <span class="anchor" id="variable-x~11"></span>
               real(kind=real64),
             </td>
 <td>intent(in)</td>
@@ -273,7 +318,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-x~9"></span>
+              <span class="anchor" id="variable-x~12"></span>
               real(kind=real128),
             </td>
 <td>intent(in)</td>

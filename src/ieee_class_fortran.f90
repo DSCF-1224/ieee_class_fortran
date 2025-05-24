@@ -8,6 +8,7 @@ module ieee_class_fortran
 
     use, intrinsic :: ieee_arithmetic, only: operator(.eq.)
     use, intrinsic :: ieee_arithmetic, only: ieee_class
+    use, intrinsic :: ieee_arithmetic, only: ieee_class_type
     use, intrinsic :: ieee_arithmetic, only: ieee_negative_inf
     use, intrinsic :: ieee_arithmetic, only: ieee_negative_zero
     use, intrinsic :: ieee_arithmetic, only: ieee_positive_zero
@@ -38,6 +39,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is `ieee_negative_inf`
     interface is_ieee_negative_inf
+        module procedure :: is_ieee_negative_inf_class
         module procedure :: is_ieee_negative_inf_real32
         module procedure :: is_ieee_negative_inf_real64
         module procedure :: is_ieee_negative_inf_real128
@@ -46,6 +48,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is `ieee_negative_zero`
     interface is_ieee_negative_zero
+        module procedure :: is_ieee_negative_zero_class
         module procedure :: is_ieee_negative_zero_real32
         module procedure :: is_ieee_negative_zero_real64
         module procedure :: is_ieee_negative_zero_real128
@@ -54,6 +57,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
     interface is_ieee_either_zero
+        module procedure :: is_ieee_either_zero_class
         module procedure :: is_ieee_either_zero_real32
         module procedure :: is_ieee_either_zero_real64
         module procedure :: is_ieee_either_zero_real128
@@ -62,6 +66,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is `ieee_positive_zero`
     interface is_ieee_positive_zero
+        module procedure :: is_ieee_positive_zero_class
         module procedure :: is_ieee_positive_zero_real32
         module procedure :: is_ieee_positive_zero_real64
         module procedure :: is_ieee_positive_zero_real128
@@ -70,6 +75,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is `ieee_positive_inf`
     interface is_ieee_positive_inf
+        module procedure :: is_ieee_positive_inf_class
         module procedure :: is_ieee_positive_inf_real32
         module procedure :: is_ieee_positive_inf_real64
         module procedure :: is_ieee_positive_inf_real128
@@ -78,6 +84,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is `ieee_quiet_nan`
     interface is_ieee_quiet_nan
+        module procedure :: is_ieee_quiet_nan_class
         module procedure :: is_ieee_quiet_nan_real32
         module procedure :: is_ieee_quiet_nan_real64
         module procedure :: is_ieee_quiet_nan_real128
@@ -86,6 +93,7 @@ module ieee_class_fortran
 
     !> Checks whether `x` is `ieee_signaling_nan`
     interface is_ieee_signaling_nan
+        module procedure :: is_ieee_signaling_nan_class
         module procedure :: is_ieee_signaling_nan_real32
         module procedure :: is_ieee_signaling_nan_real64
         module procedure :: is_ieee_signaling_nan_real128
@@ -144,11 +152,21 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is `ieee_negative_inf`
+    logical pure elemental function is_ieee_negative_inf_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status = x .eq. ieee_negative_inf
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_negative_inf`
     logical pure elemental function is_ieee_negative_inf_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_negative_inf
+        status = is_ieee_negative_inf( ieee_class(x) )
 
     end function
 
@@ -158,7 +176,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_negative_inf
+        status = is_ieee_negative_inf( ieee_class(x) )
 
     end function
 
@@ -168,7 +186,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_negative_inf
+        status = is_ieee_negative_inf( ieee_class(x) )
 
     end function
 
@@ -176,11 +194,21 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is `ieee_negative_zero`
+    logical pure elemental function is_ieee_negative_zero_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status = x .eq. ieee_negative_zero
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_negative_zero`
     logical pure elemental function is_ieee_negative_zero_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_negative_zero
+        status = is_ieee_negative_zero( ieee_class(x) )
 
     end function
 
@@ -190,7 +218,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_negative_zero
+        status = is_ieee_negative_zero( ieee_class(x) )
 
     end function
 
@@ -200,7 +228,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_negative_zero
+        status = is_ieee_negative_zero( ieee_class(x) )
 
     end function
 
@@ -208,14 +236,22 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
+    logical pure elemental function is_ieee_either_zero_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status =      is_ieee_negative_zero(x) &!
+        &        .or. is_ieee_positive_zero(x)
+
+    end function
+
+
+    !> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`
     logical pure elemental function is_ieee_either_zero_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
+        status = is_ieee_either_zero( ieee_class(x) )
 
     end function
 
@@ -225,10 +261,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
+        status = is_ieee_either_zero( ieee_class(x) )
 
     end function
 
@@ -238,10 +271,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
+        status = is_ieee_either_zero( ieee_class(x) )
 
     end function
 
@@ -249,11 +279,21 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is `ieee_positive_zero`
+    logical pure elemental function is_ieee_positive_zero_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status = x .eq. ieee_positive_zero
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_positive_zero`
     logical pure elemental function is_ieee_positive_zero_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_zero
+        status = is_ieee_positive_zero( ieee_class(x) )
 
     end function
 
@@ -263,7 +303,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_zero
+        status = is_ieee_positive_zero( ieee_class(x) )
 
     end function
 
@@ -273,7 +313,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_zero
+        status = is_ieee_positive_zero( ieee_class(x) )
 
     end function
 
@@ -281,11 +321,21 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is `ieee_positive_inf`
+    logical pure elemental function is_ieee_positive_inf_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status = x .eq. ieee_positive_inf
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_positive_inf`
     logical pure elemental function is_ieee_positive_inf_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_inf
+        status = is_ieee_positive_inf( ieee_class(x) )
 
     end function
 
@@ -295,7 +345,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_inf
+        status = is_ieee_positive_inf( ieee_class(x) )
 
     end function
 
@@ -305,7 +355,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_positive_inf
+        status = is_ieee_positive_inf( ieee_class(x) )
 
     end function
 
@@ -313,11 +363,21 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is `ieee_quiet_nan`
+    logical pure elemental function is_ieee_quiet_nan_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status = x .eq. ieee_quiet_nan
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_quiet_nan`
     logical pure elemental function is_ieee_quiet_nan_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_quiet_nan
+        status = is_ieee_quiet_nan( ieee_class(x) )
 
     end function
 
@@ -327,7 +387,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_quiet_nan
+        status = is_ieee_quiet_nan( ieee_class(x) )
 
     end function
 
@@ -337,7 +397,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_quiet_nan
+        status = is_ieee_quiet_nan( ieee_class(x) )
 
     end function
 
@@ -345,11 +405,21 @@ module ieee_class_fortran
 
 
     !> Checks whether `x` is `ieee_signaling_nan`
+    logical pure elemental function is_ieee_signaling_nan_class(x) result(status)
+
+        type(ieee_class_type), intent(in) :: x
+
+        status = x .eq. ieee_signaling_nan
+
+    end function
+
+
+    !> Checks whether `x` is `ieee_signaling_nan`
     logical pure elemental function is_ieee_signaling_nan_real32(x) result(status)
 
         real(real32), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_signaling_nan
+        status = is_ieee_signaling_nan( ieee_class(x) )
 
     end function
 
@@ -359,7 +429,7 @@ module ieee_class_fortran
 
         real(real64), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_signaling_nan
+        status = is_ieee_signaling_nan( ieee_class(x) )
 
     end function
 
@@ -369,7 +439,7 @@ module ieee_class_fortran
 
         real(real128), intent(in) :: x
 
-        status = ieee_class(x) .eq. ieee_signaling_nan
+        status = is_ieee_signaling_nan( ieee_class(x) )
 
     end function
 
