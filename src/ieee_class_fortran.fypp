@@ -20,6 +20,8 @@
     #:del DESCRIPTION
 #:enddef
 
+#:set REAL_KINDS_AND_CLASS = ['class'] + REAL_KINDS
+
 #:endmute
 module ieee_class_fortran
 
@@ -31,6 +33,7 @@ module ieee_class_fortran
 
     use, intrinsic :: ieee_arithmetic, only: operator(.eq.)
     use, intrinsic :: ieee_arithmetic, only: ieee_class
+    use, intrinsic :: ieee_arithmetic, only: ieee_class_type
     #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
     use, intrinsic :: ieee_arithmetic, only: ${IEEE_CLASS_TYPE}$
     #:endfor
@@ -53,7 +56,7 @@ module ieee_class_fortran
     #:set INTERFACE_NAME = "is_" + IEEE_CLASS_TYPE
     $:DESCRIPTION_IS_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
     interface ${INTERFACE_NAME}$
-    #:for KIND in REAL_KINDS
+    #:for KIND in REAL_KINDS_AND_CLASS
         module procedure :: ${INTERFACE_NAME}$_${KIND}$
     #:endfor
     end interface
@@ -75,26 +78,33 @@ module ieee_class_fortran
 
     contains
     #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
+    #:set INTERFACE_NAME = 'is_' + IEEE_CLASS_TYPE
+    #:for KIND in REAL_KINDS_AND_CLASS
 
-    #:for KIND in REAL_KINDS
 
     $:DESCRIPTION_IS_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
-    logical pure elemental function is_${IEEE_CLASS_TYPE}$_${KIND}$(x) result(status)
+    logical pure elemental function ${INTERFACE_NAME}$_${KIND}$(x) result(status)
+    #:if KIND != 'class'
 
         real(${KIND}$), intent(in) :: x
 
+        status = ${INTERFACE_NAME}$( ieee_class(x) )
+
+    #:else
+
+        type(ieee_class_type), intent(in) :: x
+
         #:if IEEE_CLASS_TYPE != 'ieee_either_zero'
-        status = ieee_class(x) .eq. ${IEEE_CLASS_TYPE}$
+        status = x .eq. ${IEEE_CLASS_TYPE}$
         #:else
-        associate( ieee_class_x => ieee_class(x) )
-            status =      (ieee_class_x .eq. ieee_negative_zero) &!
-            &        .or. (ieee_class_x .eq. ieee_positive_zero)
-        end associate
+        status =      is_ieee_negative_zero(x) &!
+        &        .or. is_ieee_positive_zero(x)
         #:endif
 
+    #:endif
     end function
-
     #:endfor
+
 
     #:endfor
     #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
