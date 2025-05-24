@@ -2,11 +2,6 @@
 
 #:set MODULE_NAME = 'ieee_class_fortran_test'
 
-#! real kinds
-#:set REAL_KINDS = ['real32', 'real64', 'real128']
-
-#! ieee class
-
 #:include '../src/ieee_class_fortran_common.fypp'
 
 #:set IEEE_CLASSES_ARG = &
@@ -24,5 +19,7 @@
         "ieee_positive_normal"    , &
         "ieee_positive_inf"         &
     ]
+
+#:set LIST_IEEE_IS_X = ['ieee_is_finite', 'ieee_is_nan', 'ieee_is_negative']
 
 #:endmute

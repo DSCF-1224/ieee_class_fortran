@@ -19,6 +19,9 @@ program ${PROGRAM_NAME}$
     print *, compiler_version()
 
     call test_preconditions()
+    #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
+    call test_${ITEM_IEEE_IS_X}$()
+    #:endfor
 
     print *, 'OK'
 
