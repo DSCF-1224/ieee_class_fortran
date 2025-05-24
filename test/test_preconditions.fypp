@@ -1,0 +1,44 @@
+#:mute
+
+#:include "test_common.fypp"
+
+#:set PROCEDURE_NAME = _THIS_FILE_.replace('.fypp', '')
+#:set SUBMODULE_NAME = 'imp_' + PROCEDURE_NAME
+
+#:set LIST_IEEE_SUPPORT = ['ieee_support_inf', 'ieee_support_nan']
+
+#:endmute
+submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
+
+    #:for ITEM_IEEE_SUPPORT in LIST_IEEE_SUPPORT
+    use, intrinsic :: ieee_arithmetic, only: ${ITEM_IEEE_SUPPORT}$
+    #:endfor
+
+
+    implicit none
+
+
+    contains
+
+
+    module procedure ${PROCEDURE_NAME}$
+
+        #:for ITEM_IEEE_SUPPORT in LIST_IEEE_SUPPORT
+        #:for KIND in REAL_KINDS
+        if ( .not. ${ITEM_IEEE_SUPPORT}$( 0.0_${KIND}$ ) ) then
+            #:if ITEM_IEEE_SUPPORT == 'ieee_support_inf'
+            error stop ' IEEE infinite value is NOT supported for `real(${KIND}$)`.'
+            #:elif ITEM_IEEE_SUPPORT == 'ieee_support_nan'
+            error stop ' IEEE NaN value is NOT supported for `real(${KIND}$)`.'
+            #:else
+                #:stop '‘{}’ has no IMPLICIT type.'.format(ITEM_IEEE_SUPPORT)
+            #:endif
+        end if
+
+    #:endfor
+    #:endfor
+        print *, 'OK: preconditions'
+
+    end procedure ${PROCEDURE_NAME}$
+
+end submodule ${SUBMODULE_NAME}$

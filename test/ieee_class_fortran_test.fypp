@@ -10,4 +10,19 @@ module ${MODULE_NAME}$
     #:endfor
     use, non_intrinsic :: ieee_class_fortran
 
+
+    implicit none
+
+
+    private
+    public  :: test_preconditions
+
+
+    interface
+
+        module subroutine test_preconditions
+        end subroutine test_preconditions
+
+    end interface
+
 end module ${MODULE_NAME}$

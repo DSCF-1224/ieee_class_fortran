@@ -18,6 +18,8 @@ program ${PROGRAM_NAME}$
     print *, compiler_options()
     print *, compiler_version()
 
+    call test_preconditions()
+
     print *, 'OK'
 
 end program ${PROGRAM_NAME}$
