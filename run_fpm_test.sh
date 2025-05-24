@@ -1,6 +1,9 @@
 #!/bin/sh -e
 cd test
 
+fypp -F ieee_class_fortran_test.fypp ieee_class_fortran_test.f90
+fypp -F                    test.fypp                    test.f90
+
 fypp -F -DMODE=1 test_ieee_is_X.fypp test_ieee_is_finite.f90
 fypp -F -DMODE=2 test_ieee_is_X.fypp test_ieee_is_nan.f90
 fypp -F -DMODE=3 test_ieee_is_X.fypp test_ieee_is_negative.f90

@@ -1,0 +1,13 @@
+#:mute
+
+#:include "test_common.fypp"
+
+#:endmute
+module ${MODULE_NAME}$
+
+    #:for KIND in REAL_KINDS
+    use,     intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+    use, non_intrinsic :: ieee_class_fortran
+
+end module ${MODULE_NAME}$

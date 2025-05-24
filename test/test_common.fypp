@@ -1,5 +1,7 @@
 #:mute
 
+#:set MODULE_NAME = 'ieee_class_fortran_test'
+
 #! real kinds
 #:set REAL_KINDS = ['real32', 'real64', 'real128']
 
