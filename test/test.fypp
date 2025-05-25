@@ -1,0 +1,34 @@
+#:mute
+
+#:include "test_common.fypp"
+
+#:set PROGRAM_NAME = _THIS_FILE_.replace('.fypp', '')
+
+#:endmute
+program ${PROGRAM_NAME}$
+
+    use,     intrinsic :: iso_fortran_env         , only: compiler_options
+    use,     intrinsic :: iso_fortran_env         , only: compiler_version
+    use, non_intrinsic :: ieee_class_fortran_test
+
+
+    implicit none
+
+
+    print *, compiler_options()
+    print *, compiler_version()
+
+    call test_preconditions()
+    #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
+    call test_is_${IEEE_CLASS_TYPE}$()
+    #:endfor
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+    call test_set_${IEEE_CLASS_TYPE}$()
+    #:endfor
+    #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
+    call test_${ITEM_IEEE_IS_X}$()
+    #:endfor
+
+    print *, 'OK'
+
+end program ${PROGRAM_NAME}$

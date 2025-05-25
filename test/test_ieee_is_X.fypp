@@ -2,49 +2,43 @@
 #:mute
 
     #:if MODE == 1
-        #:set TARGET_FUNCTION_NAME = "ieee_is_finite"
+        #:set ITEM_IEEE_IS_X = "ieee_is_finite"
     #:elif MODE == 2
-        #:set TARGET_FUNCTION_NAME = "ieee_is_nan"
+        #:set ITEM_IEEE_IS_X = "ieee_is_nan"
     #:elif MODE == 3
-        #:set TARGET_FUNCTION_NAME = "ieee_is_negative"
+        #:set ITEM_IEEE_IS_X = "ieee_is_negative"
     #:else
         #:stop "Unsupported mode is detected."
     #:endif
 
+    #:set PROCEDURE_NAME = 'test_' + ITEM_IEEE_IS_X
+    #:set SUBMODULE_NAME = 'imp_'  + PROCEDURE_NAME
+
 #:endmute
-program check
+submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
 
-    #:for KIND in REAL_KINDS
-    use, intrinsic :: iso_fortran_env, only: ${KIND}$
-    #:endfor
-    use, intrinsic :: iso_fortran_env, only: compiler_options
-    use, intrinsic :: iso_fortran_env, only: compiler_version
-
-
-    use, intrinsic :: ieee_arithmetic, only: ${TARGET_FUNCTION_NAME}$
-
-
-    use, non_intrinsic :: ieee_class_fortran
+    use, intrinsic :: ieee_arithmetic, only: ${ITEM_IEEE_IS_X}$
 
 
     implicit none
 
 
-    print * , compiler_version()
-    print * , compiler_options()
-
-    #:for KIND in REAL_KINDS
-    call test_${TARGET_FUNCTION_NAME}$_${KIND}$
-    #:endfor
-
-    print '(A)', 'OK: test_${TARGET_FUNCTION_NAME}$'
-
-
     contains
 
 
+    module procedure ${PROCEDURE_NAME}$
+
+        #:for KIND in REAL_KINDS
+        call ${PROCEDURE_NAME}$_${KIND}$
+        #:endfor
+
+        print *, 'OK: ${ITEM_IEEE_IS_X}$'
+
+    end procedure ${PROCEDURE_NAME}$
+
+
     #:for KIND in REAL_KINDS
-    #:set SUBROUTINE_NAME = "test_" + TARGET_FUNCTION_NAME + "_" + KIND
+    #:set SUBROUTINE_NAME = PROCEDURE_NAME + '_' + KIND
     subroutine ${SUBROUTINE_NAME}$()
 
 
@@ -59,7 +53,7 @@ program check
 
                 #:set ERR_MSG_FORE = "; NG; result of " + TEST_TARGET_SUBROUTINE_NAME + "(test_" + KIND + ") must be"
 
-                #:if TARGET_FUNCTION_NAME == "ieee_is_finite"
+                #:if ITEM_IEEE_IS_X == "ieee_is_finite"
 
                     #:if IEEE_CLASS_TARGET.endswith("inf") or IEEE_CLASS_TARGET.endswith("nan")
                         #:set ERR_MSG_REAR = ".false."
@@ -69,7 +63,7 @@ program check
                         #:set FLAG         = ".not. "
                     #:endif
 
-                #:elif TARGET_FUNCTION_NAME == "ieee_is_nan"
+                #:elif ITEM_IEEE_IS_X == "ieee_is_nan"
 
                     #:if "nan" in IEEE_CLASS_TARGET
                         #:set ERR_MSG_REAR = ".true."
@@ -79,7 +73,7 @@ program check
                         #:set FLAG         = ""
                     #:endif
 
-                #:elif TARGET_FUNCTION_NAME == "ieee_is_negative"
+                #:elif ITEM_IEEE_IS_X == "ieee_is_negative"
 
                     #:if "negative" in IEEE_CLASS_TARGET
                         #:set ERR_MSG_REAR = ".true."
@@ -90,11 +84,11 @@ program check
                     #:endif
 
                 #:else
-                    #:stop "Unsupported target function: `{}` is detected.".format(TARGET_FUNCTION_NAME)
+                    #:stop "Unsupported target function: `{}` is detected.".format(ITEM_IEEE_IS_X)
                 #:endif
 
             #:endmute
-            if ( ${FLAG}$${TARGET_FUNCTION_NAME}$(test_${KIND}$) ) error stop '${ERR_MSG_FORE}$ ${ERR_MSG_REAR}$'
+            if ( ${FLAG}$${ITEM_IEEE_IS_X}$(test_${KIND}$) ) error stop '${ERR_MSG_FORE}$ ${ERR_MSG_REAR}$'
             #:del ERR_MSG_FORE
             #:del ERR_MSG_REAR
             #:del FLAG
@@ -106,4 +100,4 @@ program check
     end subroutine ${SUBROUTINE_NAME}$
 
     #:endfor
-end program check
+end submodule ${SUBMODULE_NAME}$

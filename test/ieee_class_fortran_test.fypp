@@ -1,0 +1,58 @@
+#:mute
+
+#:include "test_common.fypp"
+
+#:endmute
+module ${MODULE_NAME}$
+
+    #:for KIND in REAL_KINDS
+    use,     intrinsic :: iso_fortran_env, only: ${KIND}$
+    #:endfor
+    use, non_intrinsic :: ieee_class_fortran
+
+
+    implicit none
+
+
+    private
+    #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
+    public  :: test_${ITEM_IEEE_IS_X}$
+    #:endfor
+    #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
+    public  :: test_is_${IEEE_CLASS_TYPE}$
+    #:endfor
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+    public  :: test_set_${IEEE_CLASS_TYPE}$
+    #:endfor
+    public  :: test_preconditions
+
+
+    interface
+
+        #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
+        #:set SUBROUTINE_NAME = 'test_' + ITEM_IEEE_IS_X
+        module subroutine ${SUBROUTINE_NAME}$
+        end subroutine ${SUBROUTINE_NAME}$
+
+        #:del SUBROUTINE_NAME
+        #:endfor
+        #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
+        #:set SUBROUTINE_NAME = 'test_is_' + IEEE_CLASS_TYPE
+        module subroutine ${SUBROUTINE_NAME}$
+        end subroutine ${SUBROUTINE_NAME}$
+
+        #:del SUBROUTINE_NAME
+        #:endfor
+        #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+        #:set SUBROUTINE_NAME = 'test_set_' + IEEE_CLASS_TYPE
+        module subroutine ${SUBROUTINE_NAME}$
+        end subroutine ${SUBROUTINE_NAME}$
+
+        #:del SUBROUTINE_NAME
+        #:endfor
+        module subroutine test_preconditions
+        end subroutine test_preconditions
+
+    end interface
+
+end module ${MODULE_NAME}$
