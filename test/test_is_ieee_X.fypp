@@ -54,7 +54,7 @@ submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
         #:for IEEE_CLASS_ARG in IEEE_CLASSES_ARG
         #:mute
 
-            #:set FLAG = ""
+            #:set FLAG = "      "
             #:set ERR_MSG = "; NG; " + TEST_TARGET_NAME + "(" + IEEE_CLASS_ARG + " as " + KIND + ") must be "
 
             #:if ITEM_IS_IEEE_X != "ieee_either_zero"
@@ -78,9 +78,7 @@ submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
             #:endif
 
         #:endmute
-        if ( ${FLAG}$${TEST_TARGET_NAME}$( ieee_value( 0.0_${KIND}$ , ${IEEE_CLASS_ARG}$ ) ) ) then
-            error stop '${ERR_MSG}$'
-        end if
+        if ( ${FLAG}$${TEST_TARGET_NAME}$( ieee_value( 0.0_${KIND}$ , ${IEEE_CLASS_ARG.ljust(23)}$ ) ) ) error stop '${ERR_MSG}$'
         #:endfor
     end subroutine ${SUBROUTINE_NAME}$
 

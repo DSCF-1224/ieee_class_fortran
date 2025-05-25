@@ -19,11 +19,11 @@ program ${PROGRAM_NAME}$
     print *, compiler_version()
 
     call test_preconditions()
-    #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
-    call test_${ITEM_IEEE_IS_X}$()
-    #:endfor
     #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
     call test_is_${IEEE_CLASS_TYPE}$()
+    #:endfor
+    #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
+    call test_${ITEM_IEEE_IS_X}$()
     #:endfor
 
     print *, 'OK'

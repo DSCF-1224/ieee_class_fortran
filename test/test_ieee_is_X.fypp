@@ -11,8 +11,8 @@
         #:stop "Unsupported mode is detected."
     #:endif
 
-#:set SUBMODULE_NAME = 'imp_'  + ITEM_IEEE_IS_X
-#:set PROCEDURE_NAME = 'test_' + ITEM_IEEE_IS_X
+    #:set PROCEDURE_NAME = 'test_' + ITEM_IEEE_IS_X
+    #:set SUBMODULE_NAME = 'imp_'  + PROCEDURE_NAME
 
 #:endmute
 submodule (${MODULE_NAME}$) ${SUBMODULE_NAME}$
