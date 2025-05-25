@@ -21,6 +21,9 @@ module ${MODULE_NAME}$
     #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
     public  :: test_is_${IEEE_CLASS_TYPE}$
     #:endfor
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+    public  :: test_set_${IEEE_CLASS_TYPE}$
+    #:endfor
     public  :: test_preconditions
 
 
@@ -35,6 +38,13 @@ module ${MODULE_NAME}$
         #:endfor
         #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
         #:set SUBROUTINE_NAME = 'test_is_' + IEEE_CLASS_TYPE
+        module subroutine ${SUBROUTINE_NAME}$
+        end subroutine ${SUBROUTINE_NAME}$
+
+        #:del SUBROUTINE_NAME
+        #:endfor
+        #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+        #:set SUBROUTINE_NAME = 'test_set_' + IEEE_CLASS_TYPE
         module subroutine ${SUBROUTINE_NAME}$
         end subroutine ${SUBROUTINE_NAME}$
 

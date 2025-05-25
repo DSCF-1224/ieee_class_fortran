@@ -22,6 +22,9 @@ program ${PROGRAM_NAME}$
     #:for IEEE_CLASS_TYPE in IS_IEEE_CLASS_TYPE
     call test_is_${IEEE_CLASS_TYPE}$()
     #:endfor
+    #:for IEEE_CLASS_TYPE in SET_IEEE_CLASS_TYPE
+    call test_set_${IEEE_CLASS_TYPE}$()
+    #:endfor
     #:for ITEM_IEEE_IS_X in LIST_IEEE_IS_X
     call test_${ITEM_IEEE_IS_X}$()
     #:endfor
