@@ -4,6 +4,8 @@ program demo
     use, intrinsic :: iso_fortran_env, only: ${ITEM}$
     #:endfor
 
+    use, non_intrinsic :: ieee_class_fortran
+
 
     implicit none
 
