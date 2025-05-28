@@ -1,6 +1,11 @@
+#:mute
+
+    #:include '../src/ieee_class_fortran_common.fypp'
+
+#:endmute
 program demo
 
-    #:for ITEM in ['compiler_version', 'compiler_options']
+    #:for ITEM in ['compiler_version', 'compiler_options'] + REAL_KINDS
     use, intrinsic :: iso_fortran_env, only: ${ITEM}$
     #:endfor
 
@@ -13,4 +18,27 @@ program demo
     print '(A)', compiler_version()
     print '(A)', compiler_options()
 
+
+    #:for KIND in REAL_KINDS
+    call demo_${KIND}$
+    #:endfor
+
+
+    contains
+
+    #:for KIND in REAL_KINDS
+
+    #:set SUBROUTINE_NAME = 'demo_' + KIND
+    subroutine ${SUBROUTINE_NAME}$
+
+        real(${KIND}$) :: test_value
+
+        print *
+        #:for ITEM in SET_IEEE_CLASS_TYPE
+        call set_${ITEM.ljust(18)}$ (test_value); print *, '${ITEM.ljust(19)}$', '${KIND.ljust(7)}$', test_value
+        #:endfor
+
+    end subroutine ${SUBROUTINE_NAME}$
+
+    #:endfor
 end program demo
