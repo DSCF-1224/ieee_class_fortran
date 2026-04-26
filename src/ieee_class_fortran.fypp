@@ -1,5 +1,4 @@
 #:include "ieee_class_fortran_common.fypp"
-#:set DESCRIPTION_IS_IEEE_EITHER_ZERO = '!> Checks whether `x` is either `ieee_negative_zero` or `ieee_positive_zero`'
 #:mute
 
 #:set DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE = '    !> Checks whether `x` is '
