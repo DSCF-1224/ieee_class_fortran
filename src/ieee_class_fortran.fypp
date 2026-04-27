@@ -4,10 +4,10 @@
 #:set DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE = '    !> Checks whether `x` is '
 
 #:def DESCRIPTION_IS_IEEE_CLASS_TYPE(IEEE_CLASS_TYPE)
-    #:if IEEE_CLASS_TYPE != 'ieee_either_zero'
-        #:set DESCRIPTION = DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE + '`' + IEEE_CLASS_TYPE + '`'
-    #:else
+    #:if IEEE_CLASS_TYPE == 'ieee_either_zero'
         #:set DESCRIPTION = DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE + 'either `ieee_negative_zero` or `ieee_positive_zero`'
+    #:else
+        #:set DESCRIPTION = DESCRIPTION_IS_IEEE_CLASS_TYPE_FORE + '`' + IEEE_CLASS_TYPE + '`'
     #:endif
     $:DESCRIPTION
     #:del DESCRIPTION
