@@ -17,7 +17,7 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v7
 
-            - uses: fortran-lang/setup-fpm@v11
+            - uses: fortran-lang/setup-fpm@v12
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
 
